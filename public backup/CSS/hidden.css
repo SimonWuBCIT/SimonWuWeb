@@ -1,0 +1,324 @@
+/*******************************************
+ ***** Overall Element (Default) Theme *****
+ *******************************************/
+html {
+    height: 100%;
+    width: 100%;
+}
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Source Code Pro", "Courier New";
+    overflow-y: auto;
+}
+a {
+    color: greenyellow;
+}
+
+/******************************
+ ***** Background Picture *****
+ ******************************/
+.background {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    background-image: url("../Assets/low_poly.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -5;
+}
+
+/**********************************
+ ***** Navigation Bar Styling *****
+ **********************************/
+.navigation_desktop {
+    list-style-type: none;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    padding: 0;
+}
+.navigation_desktop li {
+    float: left;
+    padding: 0px 20px;
+}
+.navigation_bar {
+    width: 100%;
+    height: 10vh;
+    z-index: 300;
+    opacity: 0.9;
+    /* background-image: linear-gradient(to bottom, rgba(41, 40, 40, 1) 90%, rgba(0,0,0,0)) */
+    background: rgba(20, 20, 20, 1);
+}
+.navigation_mobile {
+    list-style-type: none;
+    color: white;
+    background: rgba(20, 20, 20, 1);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: block;
+    z-index: 1;
+}
+.navigation_mobile li {
+    padding: 5px;
+    margin: 0;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+}
+.menu {
+    height: 100%;
+    display: flex;
+    float: left;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin-left: 10px;
+}
+
+/* Logo Styling (on Navigation Bar) */
+.logo {
+    height: 100%;
+    margin-top: 0;
+    padding: 0;
+    float: right;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    display: flex;
+
+}
+.logo img {
+    /* max-width: 10%;
+    max-height: 10%; */
+    height: 60%;
+    margin-right: 20px;
+}
+
+/******************************
+ ***** Inner Body Styling *****
+ ******************************/
+.inner_body {
+    height: calc(100% - 10vh);
+    width: 100%;
+}
+.inner_body_items {
+    height: 100%;
+    position: relative;
+    /* margin-top: 15vh; */
+}
+.vertical_name {
+    position: absolute;
+    /* height: calc(100% - 10vh); */
+    height: 90vh;
+    width: 30vw;
+    padding: 0;
+    margin: 0;
+    background: rgba(20, 20, 20, 1);
+    opacity: 0.9;
+    color: white;
+    /* z-index: -1; */
+}
+.contact_links {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.portrait {
+    margin: auto;
+    height: 50%;
+    width: 75%;
+    text-align: center;
+}
+.portrait img {
+    width: 100%;
+    border-radius: 50%;
+    padding-top: 10px;
+}
+.name {
+    text-align: center;
+    font-family: "Poiret One";
+    font-size: 20px;
+}
+.profile {
+    position: absolute;
+    right: 0;
+    width: calc(100% - 30vw);
+    height: 90vh;
+    margin: 0;
+    padding: 0;
+}
+.profile p {
+    margin: 0;
+    padding: 0;
+}
+
+/***************************
+ ***** Project Styling *****
+ ***************************/
+.project {
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* Whiteboard Style */
+.whiteboard {
+    max-width: 350px;
+    color: black;
+    padding: 50px 10px 10px 30px;
+    margin-top: 21px;
+    font-size: 12px;
+    float: left;
+}
+
+/* Code Snippet Style */
+.code_container {
+    background: white;
+    margin: 0;
+    padding: 20px 10px 10px 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.code_container input {
+    width: 120px;
+    margin-bottom: 10px;
+    padding: 0;
+    font-size: 12px;
+    font-family: "Source Code Pro";
+    border: none;
+    border-bottom: 1px dashed red;
+}
+.code_container input:focus {
+    outline: none;
+}
+.code_snippet_outer {
+    font-weight: bold;
+    margin-top: 0;
+}
+.code_snippet {
+    margin-left: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: inline-block;
+}
+.code_snippet_inner {
+    margin-left: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: inline-block;
+}
+.code_snippet_inner_indent {
+    margin-left: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+    display: inline-block;
+}
+.code_snippet_inline {
+    margin: 0 0 10px 0;
+    display: inline-block;
+}
+
+/******************************
+ ***** Project Card Style *****
+ ******************************/
+.project_container {
+    width: 350px;
+    height: 350px;
+    margin: 50px 20px 0 20px;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.project_image_container {
+    width: 100%;
+    height: 90%;
+    padding-top: 20px;
+    text-align: center;
+    overflow: hidden;
+}
+.project_image {
+    max-width: 35%;
+    height: 80%;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+.project_image img {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+.project_image_alt {
+    width: 100%;
+    height: 80%;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+.project_image_alt img {
+    padding: 0;
+    padding-top: 50px;
+    margin: 0;
+    width: 90%;
+}
+.project_title {
+    text-align: center;
+    height: 20%;
+}
+.project_title p {
+    margin: 0;
+    padding-top: 20px;
+}
+.up_button_container {
+    text-align: center;
+}
+.project_description {
+    width: 100%;
+    height: 10%;
+    background: whitesmoke;
+    color: black;
+    border-radius: 4px 4px 15px 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.project_text {
+    margin: 10px;
+    /* padding: 10px; */
+    min-height: 80%;
+    position: relative;
+}
+.project_text p {
+    margin: 0;
+    padding: 0 10px;
+}
+.project_role {
+    font-weight: bold;
+}
+.project_language {
+    font-style: italic;
+}
+.project_button_container {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+.source_button {
+    border: none;
+    background: none;
+    font-size: 16px;
+    font-family: "Source Code Pro";
+    margin: 0 20px;
+}

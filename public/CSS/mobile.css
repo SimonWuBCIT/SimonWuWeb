@@ -1,0 +1,113 @@
+@media only screen and (max-width: 768px) {
+    .search_bar {
+        display: none;
+    }
+    .button_bar {
+        display: none;
+    }
+    .button_container {
+        display: none;
+    }
+    .command {
+        display: none;
+    }
+    .about_header {
+        display: none;
+    }
+    .navigation_desktop {
+        display: none;
+    }
+    .courses {
+        display: none;
+    }
+
+    .portrait {
+        position: static;
+        width: 100%;
+        transform: none;
+        margin-top: calc(25% - 20px);
+    }
+    .portrait_picture {
+        border-radius: 0;
+        border: none;
+        max-height: 50%;
+    }
+    /* .courses {
+        position: static;
+        width: 100%;
+        transform: none;
+    } */
+    .about_me {
+        position: static;
+        width: 100%;
+        transform: none;
+    }
+    .education {
+        position: static;
+        height: auto;
+        width: 100%;
+        transform: none;
+    }
+    .whiteboard {
+        display: none;
+    }
+    /* .project_container {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        display: block;
+    }
+    .project_card {
+        margin: auto;
+        width: 100%;
+        display: inline-block;
+        clip-path: none;
+        border-radius: 0;
+    } 
+    .project_tab_container {
+        width: 100%;
+    }
+    .project_tab {
+        display: block;
+        width: 100%;
+        float: right;
+        clip-path: none;
+        border-radius: 0;
+    }
+    .project_image_container {
+        width: 100%;
+        height: calc(50% - 20px);
+        text-align: center;
+        margin: 0;
+        padding: 10px 0;
+    } */
+    .content {
+        overflow: auto;
+        height: auto;
+        max-height: none !important;
+    }
+    .section {
+        width: 95%;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .navigation_bar {
+        background: #202020;
+        opacity: 1;
+    }
+    .menu {
+        display: block;
+    }
+    .inner_body {
+        height: auto;
+    }
+    .logo {
+        width: 100%;
+        position: static;
+        /* margin-left: 20px; */
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+}

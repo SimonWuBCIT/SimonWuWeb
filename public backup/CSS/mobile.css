@@ -1,0 +1,56 @@
+@media only screen and (max-width: 768px) {
+    .search_bar {
+        display: none;
+    }
+    .button_bar {
+        display: none;
+    }
+    .button_container {
+        display: none;
+    }
+    .command {
+        display: none;
+    }
+    .about_header {
+        display: none;
+    }
+    .navigation_desktop {
+        display: none;
+    }
+    .courses {
+        display: none;
+    }
+
+    .navigation_bar {
+        background: #202020;
+        opacity: 1;
+    }
+    .menu {
+        display: block;
+        float: none;
+        margin: 0;
+        padding: 0;
+    }
+    .logo {
+        height: calc(100% - 20px);
+        width: 100%;
+        position: static;
+        /* margin-left: 20px; */
+        margin: 10px 0;
+        text-align: center;
+        display: block;
+    }
+    .logo img {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .vertical_name {
+        width: 100%;
+        z-index: -1;
+    }
+    .portrait {
+        height: 25%;
+    }
+}

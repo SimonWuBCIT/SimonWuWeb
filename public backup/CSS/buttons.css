@@ -1,0 +1,15 @@
+.icon_container {
+    color: white;
+    margin: 10px;
+}
+.icon--ei-close-o {
+    color: salmon
+}
+.icon_container .icon--ei-sc-github {
+    color: white;
+    fill: white;
+}
+.icon_container .icon--ei-sc-linkedin {
+    color: white;
+    fill: white;
+}

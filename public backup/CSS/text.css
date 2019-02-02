@@ -1,0 +1,112 @@
+/*********************************
+ ***** Normal Text Alignment *****
+ *********************************/
+.center {
+    text-align: center;
+}
+.left_align {
+    text-align: left;
+}
+.right_align {
+    text-align: right;
+}
+
+/*****************************************
+ ***** Div Alignment (used together) *****
+ *****************************************/
+.inline_left {
+    float: left;
+    text-align: left;
+    width: 33%;
+}
+.inline_right {
+    float: right;
+    text-align: right;
+    width: 33%;
+}
+.inline_center {
+    display: inline-block;
+    text-align: center;
+    width: 33%;
+}
+
+/*************************
+ ***** Text Elements *****
+ *************************/
+.command {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.subheading {
+    font-weight: bold;
+}
+.detail_text {
+    /* indent */
+    padding-left: 50px;
+    padding-bottom: 15px; 
+}
+.horizontal_list ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    list-style-type: none;
+}
+.horizontal_list li {
+    float: left;
+    padding-right: 20px;
+}
+.vertical_list ul {
+    list-style-type: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+.mini_skills_table {
+    border-collapse: collapse;
+}
+.mini_skills_table tr:first-child td {
+    padding-right: 7px;
+}
+
+/*****************
+ ***** Color *****
+ *****************/
+.green_color {
+   color: green;
+}
+.blue_color {
+    color: deepskyblue;
+}
+.purple_color {
+    color: purple;
+}
+.orange_color {
+    color: darkorange;
+}
+.salmon_color {
+    color: salmon;
+}
+
+.background_lavender{
+    background-color: lavender;
+}
+.background_salmon {
+    background-color: salmon;
+}
+.background_peri {
+    background-color: skyblue;
+}
+.background_pink {
+    background-color: orange;
+}
+.background_midnight {
+    background-color: dimgray;
+}
+.background_white {
+    background-color: white;
+}
+
+.background_protocol {
+    background-image: url("../Assets/Project/GoToIdleProtocol.png");
+    /* background-size: cover; */
+    background-size: 100%;
+}

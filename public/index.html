@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Simon Wu - Root</title>
+    <link rel="stylesheet" href="./CSS/hidden.css">
+    <link rel="stylesheet" href="./CSS/text.css">
+    <link rel="stylesheet" href="./CSS/buttons.css">
+
+    <link rel="stylesheet" href="./CSS/mobile.css">
+
+    <link rel="icon" href="./Assets/logo.png">
+
+    <!-- Google jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="./JavaScript/terminal_windows.js" type="text/javascript"></script>
+    <script src="./JavaScript/project_transition.js" type="text/javascript"></script>
+
+    <!-- For fonts purposes -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+
+    <!-- For icons purposes -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/evil-icons@1.9.0/assets/evil-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/evil-icons@1.9.0/assets/evil-icons.min.js"></script>
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="navigation_bar sticky">
+        <div class="logo">
+            <img class="logo_picture" src="./Assets/logo.png" alt="Logo" />
+        </div>
+        <div class="menu">
+            <ul class="navigation_desktop">
+                <li>HOME</li>
+                <li>PROJECTS</li>
+                <li>WORK</li>
+                <li>CV</li>
+            </ul>
+            <ul class="navigation_mobile">
+                <li>HOME</li>
+                <li>PROJECTS</li>
+                <li>WORK</li>
+                <li>CV</li>
+            </ul>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="search_bar">
+            <input class="terminal_command" type="text" spellcheck="false" />
+            <p>simonwu:~$</p>
+        </div>
+    </div>
+    <div class="inner_body">
+        <div class="portrait">
+            <div class="button_container">
+                <div class="close_button" data-icon="ei-close-o" data-size="s"></div>
+            </div>
+            <img class="portrait_picture" src="Assets/my_portrait.jpg" alt="Simon" />
+        </div>
+        <div class="section about_me">
+            <div class="button_bar">
+                <div class="close_button" data-icon="ei-close-o" data-size="s"></div>
+            </div>
+            <div class="content">
+                <p class="command">
+                    simonwu:~$ man simon_wu
+                </p>
+                <div>
+                    <div class="about_header">
+                        <p class="inline_left">WU(1)</p>
+                        <p class="inline_center">simon_wu</p>
+                        <p class="inline_right">WU(1)</p>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <br>
+                    <div class="about_description">
+                        <p class="subheading">NAME</p>
+                        <p class="detail_text">
+                            simon_wu - a 4th term BCIT student in the CST Program
+                        </p>
+                        <p class="subheading">SYNOPSIS</p>
+                        <div class="detail_text">
+                            <table class="mini_skills_table">
+                                <tr>
+                                    <td>-HTML</td>
+                                    <td>-CSS</td>
+                                    <td>-PHP</td>
+                                    <td>-JavaScript</td>
+                                </tr>
+                                <tr>
+                                    <td>-Java</td>
+                                    <td>-Kotlin</td>
+                                    <td>-MySQL</td>
+                                    <td>-C/C++/C#</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <p class="subheading">DESCRIPTION</p>
+                        <p class="detail_text">
+                            <strong>Simon</strong> combines the passion and the drive of a Computer Systems Technology
+                            student at BCIT with the professionalism and decision making skills of a mechanical
+                            engineer to
+                            deliver creative and solution driven results. He is known for practiced organization and
+                            communication skills with demonstrated ability to take initiatives, lead, and work in teams
+                            with various backgrounds.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section courses">
+            <div class="button_bar">
+                <div class="close_button" data-icon="ei-close-o" data-size="s"></div>
+            </div>
+            <div class="content">
+                <p class="command">simonwu:~$ ls courses</p>
+                <div class="horizontal_list">
+                    <ul>
+                        <li><a href="./COMP4711/COMP4711.html">COMP 4711</a></li>
+                        <li><a href="./404.html">COMP 4981</a></li>
+                    </ul>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="section education">
+            <div class="button_bar">
+                <div class="close_button" data-icon="ei-close-o" data-size="s"></div>
+            </div>
+            <div class="content">
+                <p class="command">simonwu:~$ ls education</p>
+                <div class="vertical_list">
+                    <ul>
+                        <li class="blue_color">British Columbia Institue of Technology</li>
+                        <li>Computer Systems Technology</li>
+                        <li>(2017 - Present)</li>
+                    </ul>
+                    <ul>
+                        <li class="blue_color">University of British Columbia</li>
+                        <li>B.ASc. - Mechanical (Mechatronics) Engineering</li>
+                        <li>(2010 - 2015)</li>
+                    </ul>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="project">
+        <!-- <div class="whiteboard">
+            <div class="code_container">
+                <p class="code_snippet_outer"><span class="blue_color">int</span> main(<span class="blue_color">void</span>)
+                    {</p>
+                <p class="code_snippet green_color">/*Open the project you are interested in viewing*/</p>
+                <p class="code_snippet">FILE* fhandle =</p><br>
+                <p class="code_snippet_inner_indent">fopen("</p>
+                <input type="text" spellcheck="false" maxlength="16" />
+                <p class="code_snippet_inline">", "r");</p>
+                <p class="code_snippet"><span class="purple_color">if</span>(fhandle == NULL) {</p><br><br>
+                <p class="code_snippet_inner">fprintf(stderr, <span class="orange_color">"Try a different project name"</span>);</p><br><br>
+                <p class="code_snippet">}</p><br><br>
+                <p class="code_snippet"><span class="purple_color">return</span> 0</p>
+                <p class="code_snippet_outer">}</p>
+            </div>
+            <div class="run_button_container">
+                <button class="button_run_code">RUN</button>
+            </div>
+        </div> -->
+        <!-- <div class="project_container">
+             <div class="project_tab_container">
+                <div class="project_tab background_salmon" name="Telus">
+                    <p>Telus Health</p>
+                </div>
+                <div class="project_tab background_peri" name="Psycle">
+                    <p>Psycle</p>
+                </div>
+                <div class="project_tab background_purple" name="Scavange">
+                    <p>Scavange</p>
+                </div>
+                <div class="project_tab background_pink" name="Idle">
+                    <p>Go to Idle Protocol</p>
+                </div>
+            </div>
+            <div class="project_card background_salmon" id="project_1">
+                <div class="project_image_container">
+                    <div class="project_image">
+                        <img src="Assets/Project/NFC_rose2.png" alt="NFC Reader Login Page" />
+                    </div>
+                    <div class="project_image">
+                        <img src="Assets/Project/NFC_rose1.png" alt="NFC Reader Login Page" />
+                    </div>
+                </div>
+                <div class="project_description">
+                    <p class="project_description_head">Role:</p>
+                    <p class="project_description_body">Android Design Lead</p><br>
+                    <p class="project_description_head">Client:</p>
+                    <p class="project_description_body">Telus Health</p><br>
+                    <p class="project_description_head">Description:</p>
+                    <p class="project_description_body"></p>
+                </div>
+            </div>
+            <div class="project_card background_peri" id="project_2">
+            </div>
+            <div class="project_card background_purple" id="project_3">
+            </div>
+            <div class="project_card background_pink" id="project_4">
+            </div> 
+        </div> -->
+        <div class="project_container background_salmon">
+            <div class="project_image_container">
+                <div class="project_image">
+                    <img src="Assets/Project/NFC_rose2.png" alt="NFC Reader Login Page" />
+                </div>
+                <div class="project_image">
+                    <img src="Assets/Project/NFC_rose1.png" alt="NFC Reader Login Page" />
+                </div>
+                <div class="project_title">
+                        <p>Virtual Keycard<br>(Client: Telus Health)</p>
+                </div>
+            </div>
+            <div class="project_description">
+                <div class="up_button_container">
+                    <div class="up_button" data-icon="ei-chevron-up"></div>
+                </div>
+                <div class="project_text">
+                    <p class="project_role">Android Team Lead</p>
+                    <p class="project_language">Kotlin, Android</p><br>
+                    <p>An Android app to interact with NFC card readers running on C#</p><br>
+                    <p>This is a NDA prototype project with Telus Health</p>
+                </div>
+            </div>
+        </div>
+        <div class="project_container background_white">
+            <div class="project_image_container">
+                <div class="project_image_alt background_protocol">
+                    <img src="Assets/Project/GoToIdleProtocol2.png" alt="GoToIdleProtocol1"/>
+                </div>
+                <div class="project_title background_midnight">
+                    <p>Go to Idle Protocol</p>
+                </div>
+            </div>
+            <div class="project_description">
+                <div class="up_button_container">
+                    <div class="up_button" data-icon="ei-chevron-up"></div>
+                </div>
+                <div class="project_text">
+                    <p class="project_role">Project Lead</p>
+                    <p class="project_language">C++, Windows</p><br>
+                    <p>A class project that included designing and implementing a data-link layer protocol over local 2.4GHz network</p>
+                </div>
+            </div>
+        </div>
+        <div class="project_container background_peri">
+            <div class="project_image_container">
+                <div class="project_image">
+                    <img src="Assets/Project/Psycle1.png" alt="Psycle Main Page" />
+                </div>
+                <div class="project_image">
+                    <img src="Assets/Project/Psycle2.png" alt="Psycle Map Page" />
+                </div>
+                <div class="project_title">
+                        <p>Psycle</p>
+                </div>
+            </div>
+            <div class="project_description">
+                <div class="up_button_container">
+                    <div class="up_button" data-icon="ei-chevron-up"></div>
+                </div>
+                <div class="project_text">
+                    <p></p>
+                    <p class="project_language">Java, Android</p><br>
+                    <p>A simple Android app in Java that displays nearby health facilities in New Westminster</p>
+                    <div class="project_button_container">
+                        <button class="source_button blue_color">Source</button>
+                        <button class="source_button blue_color">Video</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project_container background_pink">
+            <div class="project_image_container">
+                <div class="project_image">
+                    <img src="Assets/Project/Scavange.png" alt="NFC Reader Login Page" />
+                </div>
+                <div class="project_title">
+                        <p>Scavange</p>
+                </div>
+            </div>
+            <div class="project_description">
+                <div class="up_button_container">
+                    <div class="up_button" data-icon="ei-chevron-up"></div>
+                </div>
+                <div class="project_text">
+                    <p class="project_role">Team Lead</p>
+                    <p class="project_language">HTML, CSS, JavaScript, PHP, MySQL</p><br>
+                    <p>A mobile webpage that provides recipes based on leftover ingredients users have in their refrigerators</p>
+                    <div class="project_button_container">
+                        <button class="source_button orange_color">Source</button>
+                        <button class="source_button orange_color">Website</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="inner_body">
+
+    </div>
+</body>
+
+</html>
