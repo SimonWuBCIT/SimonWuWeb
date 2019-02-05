@@ -1,0 +1,23 @@
+{
+  "name": "simonwuweb",
+  "version": "1.0.0",
+  "description": "personal website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimonWuBCIT/SimonWuWeb.git"
+  },
+  "author": "SimonWu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SimonWuBCIT/SimonWuWeb/issues"
+  },
+  "homepage": "https://github.com/SimonWuBCIT/SimonWuWeb#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
