@@ -67,3 +67,6 @@ node_modules/
 # package related items
 package-lock.json
 package.json
+
+# test folders and documents
+nodeJStest/
