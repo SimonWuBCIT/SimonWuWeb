@@ -9,7 +9,7 @@ app.get('/*', (req, res) => {
     res.sendFile(__dirname, 'index.html');
 });
 
-app.get('/updatedb', async (req, res) => {
+app.get('/updatedb', (req, res) => {
     let mysql = require('mysql');
 
     let con = mysql.createConnection({
