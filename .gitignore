@@ -64,10 +64,6 @@ node_modules/
 # dotenv environment variables file
 .env
 
-# package related items
-package-lock.json
-package.json
-
 # test folders and documents
 tests/*
 
