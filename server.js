@@ -14,4 +14,24 @@ app.get('/hello', (req, res) => {
     res.send(`${d.toDateString()} : ${d.toTimeString()}`);
 });
 
+// app.get('/testdatabase', (req, res) => {
+//     let mysql = require('mysql');
+
+//     let con = mysql.createConnection({
+//         host: "localhost",
+//         user: "root",
+//         password: "",
+//     });
+
+//     let databaseScript = require('./database');
+
+//     con.connect(function (err) {
+//         if (err) throw err;
+//         console.log("Connected!");
+//         databaseScript.createDatabase();
+//         databaseScript.createTable();
+//     });
+// });
+
 app.listen(port, () => console.log('Server running on port 3000'));
+
