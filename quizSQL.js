@@ -2,6 +2,7 @@ const express = require('express');
 const path = require("path");
 const app = express();
 const port = 8888;
+const mysql = require('mysql');
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -10,8 +11,6 @@ app.get('/*', (req, res) => {
 });
 
 app.get('/updatedb', (req, res) => {
-    let mysql = require('mysql');
-
     let con = mysql.createConnection({
         host: "localhost",
         user: "root",
