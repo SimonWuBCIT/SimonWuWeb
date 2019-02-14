@@ -84,6 +84,7 @@ function createTable(con) {
 
 function addQuestion(con, question, options, answer) {
     let sql = "INSERT INTO question (topic, correctAnswer) VALUES (" + `"${question}"` + ", " + answer + ")";
+    let option_text;
     console.log(sql);
     con.query(sql, function (err, result) {
         if (err) throw err;
@@ -91,10 +92,10 @@ function addQuestion(con, question, options, answer) {
     });
 
     for (let i = 0; i < options.length; ++i) {
-        sql = "INSERT INTO option (topic, selection) VALUES (" + `"${question}"` + ", " + 
+        option_text = "INSERT INTO option (topic, selection) VALUES (" + `"${question}"` + ", " + 
         `"${options[i]}"` + ")";
-
-        con.query(sql, function (err, result) {
+        console.log(option_text);
+        con.query(option_text, function (err, result) {
             if (err) throw err;
             console.log("Inserted option into database");
         });
