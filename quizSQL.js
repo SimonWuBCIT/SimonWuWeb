@@ -20,7 +20,7 @@ app.get('/updatedb', async (req, res) => {
     await con.connect(function (err) {
         if (err) throw err;
         console.log("Connected!");
-        await createDatabase(con);
+        createDatabase(con);
     });
 
     await con.end(function (err) {
