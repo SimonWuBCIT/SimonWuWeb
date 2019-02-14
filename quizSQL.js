@@ -68,7 +68,7 @@ function createTable(con) {
         console.log("Question table dropped");
     });
 
-    sql = "DROP TABLE IF EXISTS option";
+    sql = "DROP TABLE IF EXISTS answerOption";
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Option table dropped");
@@ -90,7 +90,7 @@ function createTable(con) {
 function addQuestion(con, my_question, my_options, answer) {
     let sql = `INSERT INTO question (topic, correctAnswer) VALUES ("${my_question}", ${answer})`;
     let option_text;
-    console.log(sql);
+
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Inserted quesiton into database");
@@ -98,7 +98,7 @@ function addQuestion(con, my_question, my_options, answer) {
 
     for (let i = 0; i < my_options.length; ++i) {
         option_text = `INSERT INTO answerOption (topic, selection) VALUES ("${my_question}", "${my_options[i]}")`;
-        console.log(option_text);
+
         con.query(option_text, function (err, result) {
             if (err) throw err;
             console.log("Inserted option into database");
