@@ -17,10 +17,10 @@ app.get('/updatedb', async (req, res) => {
         password: "",
     });
 
-    await con.connect(function (err) {
+    await con.connect(async function (err) {
         if (err) throw err;
         console.log("Connected!");
-        createDatabase(con);
+        await createDatabase(con);
     });
 
     await con.end(function (err) {
@@ -40,7 +40,7 @@ app.get('/updatedb', async (req, res) => {
         database: "mydb"
     })
 
-    con2.connect(function (err) {
+    await con2.connect(function (err) {
         createTable(con2);
         for (let i = 0; i < 5; ++i) {
             addQuestion(con2, questionScript.myQuestions(i), questionScript.myOptions(i), questionScript.myAnswers(i));
