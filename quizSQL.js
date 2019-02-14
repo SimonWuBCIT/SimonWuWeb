@@ -74,14 +74,13 @@ function createTable(con) {
         console.log("Option table dropped");
     });
 
-    sql = `CREATE TABLE IF NOT EXISTS question (id INT AUTO_INCREMENT PRIMARY KEY," +
-        "topic VARCHAR(255), correctAnswer INT)`;
+    sql = `CREATE TABLE question (id INT AUTO_INCREMENT PRIMARY KEY, topic VARCHAR(255), correctAnswer INT)`;
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Question table created");
     });
 
-    sql = `CREATE TABLE IF NOT EXISTS option (topic VARCHAR(255), selection VARCHAR(255))`;
+    sql = `CREATE TABLE answerOption (topic VARCHAR(255), selection VARCHAR(255))`;
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Option table created");
@@ -98,7 +97,7 @@ function addQuestion(con, my_question, my_options, answer) {
     });
 
     for (let i = 0; i < my_options.length; ++i) {
-        option_text = `INSERT INTO option (topic, selection) VALUES ("${my_question}", "${my_options[i]}")`;
+        option_text = `INSERT INTO answerOption (topic, selection) VALUES ("${my_question}", "${my_options[i]}")`;
         console.log(option_text);
         con.query(option_text, function (err, result) {
             if (err) throw err;
