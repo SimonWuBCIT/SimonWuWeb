@@ -23,20 +23,27 @@ app.get('/updatedb', (req, res) => {
         createDatabase(con);
     });
 
+    con.end(function (err) {
+        if (err) {
+            throw err;
+        }
+        console.log("Database created and connection closed");
+    });
+
     let questionScript = require('./questions')
     questionScript.initAll();
 
-    con = mysql.createConnection({
+    let con2 = mysql.createConnection({
         host: "localhost",
         user: "root",
         password: "",
         database: "mydb"
     })
 
-    con.connect(function (err) {
-        createTable(con);
+    con2.connect(function (err) {
+        createTable(con2);
         for (let i = 0; i < 5; ++i) {
-            addQuestion(con, questionScript.myQuestions(i), questionScript.myOptions(i), questionScript.myAnswers(i));
+            addQuestion(con2, questionScript.myQuestions(i), questionScript.myOptions(i), questionScript.myAnswers(i));
         }
     })
 });
