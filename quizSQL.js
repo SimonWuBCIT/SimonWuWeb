@@ -62,10 +62,16 @@ function createDatabase(con) {
 }
 
 function createTable(con) {
-    let sql  = "DROP TABLE IF EXISTS question, option";
+    let sql  = "DROP TABLE IF EXISTS question";
     con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log("Question and Option table dropped");
+        console.log("Question table dropped");
+    });
+
+    sql = "DROP TABLE IF EXISTS option";
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("Option table dropped");
     });
 
     sql = `CREATE TABLE IF NOT EXISTS question (id INT AUTO_INCREMENT PRIMARY KEY," +
