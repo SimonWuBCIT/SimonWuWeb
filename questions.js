@@ -44,16 +44,16 @@ function populateQuestions() {
         "var x = this;"
     questions[4] = "Question 5: What does this refer to in the following code?<br>" +
         "var person1 = { firstName: function() {return this.firstName;}}<br>" +
-        "var person2 = { firstName: 'John',}<br>" +
+        "var person2 = { firstName: ''John'',}<br>" +
         "person1.fullName.call(person2);"
 }
 
 function populateOptions(question_number) {
     switch (question_number) {
         case 0:
-            options[0] = "<input type='radio' name='question1' value='0'>The 'owner' of the method<br>"
+            options[0] = "<input type='radio' name='question1' value='0'>The ''owner'' of the method<br>"
             options[1] = "<input type='radio' name='question1' value='1'>The global object<br>"
-            options[2] = "<input type='radio' name='question1' value='2'>The immediate child of the 'owner'<br>"
+            options[2] = "<input type='radio' name='question1' value='2'>The immediate child of the ''owner''<br>"
             options[3] = "<input type='radio' name='question1' value='3'>Invalid<br><br>"
             break;
         case 1:
