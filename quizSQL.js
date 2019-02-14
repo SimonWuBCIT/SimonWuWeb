@@ -17,7 +17,7 @@ app.get('/updatedb', async (req, res) => {
         password: "",
     });
 
-    con.connect(function (err) {
+    con.connect(async function (err) {
         if (err) throw err;
         console.log("Connected!");
         await createDatabase(con);
