@@ -82,8 +82,8 @@ function createTable(con) {
     });
 }
 
-function addQuestion(con, question, options, answer) {
-    let sql = "INSERT INTO question (topic, correctAnswer) VALUES (" + `"${question}"` + ", " + answer + ")";
+function addQuestion(con, my_question, my_options, answer) {
+    let sql = "INSERT INTO question (topic, correctAnswer) VALUES (" + `"${my_question}"` + ", " + answer + ")";
     let option_text;
     console.log(sql);
     con.query(sql, function (err, result) {
@@ -91,9 +91,9 @@ function addQuestion(con, question, options, answer) {
         console.log("Inserted quesiton into database");
     });
 
-    for (let i = 0; i < options.length; ++i) {
-        option_text = "INSERT INTO option (topic, selection) VALUES (" + `"${question}"` + ", " + 
-        `"${options[i]}"` + ")";
+    for (let i = 0; i < my_options.length; ++i) {
+        option_text = "INSERT INTO option (topic, selection) VALUES (" + `"${my_question}"` + ", " + 
+        `"${my_options[i]}"` + ")";
         console.log(option_text);
         con.query(option_text, function (err, result) {
             if (err) throw err;
