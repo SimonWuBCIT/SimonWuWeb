@@ -11,47 +11,51 @@ app.get('/*', (req, res) => {
 });
 
 app.get('/updatedb', async (req, res) => {
+    let questionScript = require('./questions');
+    questionScript.initAll();
+
     let con = mysql.createConnection({
         host: "localhost",
         user: "root",
         password: "",
     });
 
-    await con.connect(async function (err) {
+    con.connect(function (err) {
         if (err) throw err;
         console.log("Connected!");
-        await createDatabase(con);
+        //createDatabase(con);
+        con.query("CREATE DATABASE IF NOT EXISTS mydb", function (err, result) {
+            if (err) throw err;
+            console.log("Database created");
+
+            let con2 = mysql.createConnection({
+                host: "localhost",
+                user: "root",
+                password: "",
+                database: "mydb"
+            });
+
+            con2.connect(function (err) {
+                createTable(con2);
+                for (let i = 0; i < 5; ++i) {
+                    addQuestion(con2, questionScript.myQuestions(i), questionScript.myOptions(i), questionScript.myAnswers(i));
+                }
+            });
+        });
     });
 
-    await con.end(function (err) {
-        if (err) {
-            throw err;
-        }
-        console.log("Database created and connection closed");
-    });
-
-    let questionScript = require('./questions')
-    questionScript.initAll();
-
-    let con2 = await mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "mydb"
-    })
-
-    await con2.connect(function (err) {
-        createTable(con2);
-        for (let i = 0; i < 5; ++i) {
-            addQuestion(con2, questionScript.myQuestions(i), questionScript.myOptions(i), questionScript.myAnswers(i));
-        }
-    })
+    // con.end(function (err) {
+    //     if (err) {
+    //         throw err;
+    //     }
+    //     console.log("Database created and connection closed");
+    // });
 });
 
 app.listen(port, () => console.log('Server running on port 8888'));
 
-async function createDatabase(con) {
-    await con.query("CREATE DATABASE IF NOT EXISTS mydb", function (err, result) {
+function createDatabase(con) {
+    con.query("CREATE DATABASE IF NOT EXISTS mydb", function (err, result) {
         if (err) throw err;
         console.log("Database created");
     });
