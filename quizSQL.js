@@ -17,13 +17,13 @@ app.get('/updatedb', async (req, res) => {
         password: "",
     });
 
-    con.connect(async function (err) {
+    await con.connect(function (err) {
         if (err) throw err;
         console.log("Connected!");
         await createDatabase(con);
     });
 
-    con.end(function (err) {
+    await con.end(function (err) {
         if (err) {
             throw err;
         }
