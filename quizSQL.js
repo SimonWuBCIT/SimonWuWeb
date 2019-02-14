@@ -10,7 +10,7 @@ app.get('/*', (req, res) => {
     res.sendFile(__dirname, 'index.html');
 });
 
-app.get('/updatedb', (req, res) => {
+app.get('/updatedb', async (req, res) => {
     let con = mysql.createConnection({
         host: "localhost",
         user: "root",
@@ -20,7 +20,7 @@ app.get('/updatedb', (req, res) => {
     con.connect(function (err) {
         if (err) throw err;
         console.log("Connected!");
-        createDatabase(con);
+        await createDatabase(con);
     });
 
     con.end(function (err) {
@@ -33,7 +33,7 @@ app.get('/updatedb', (req, res) => {
     let questionScript = require('./questions')
     questionScript.initAll();
 
-    let con2 = mysql.createConnection({
+    let con2 = await mysql.createConnection({
         host: "localhost",
         user: "root",
         password: "",
@@ -50,8 +50,8 @@ app.get('/updatedb', (req, res) => {
 
 app.listen(port, () => console.log('Server running on port 8888'));
 
-function createDatabase(con) {
-    con.query("CREATE DATABASE IF NOT EXISTS mydb", function (err, result) {
+async function createDatabase(con) {
+    await con.query("CREATE DATABASE IF NOT EXISTS mydb", function (err, result) {
         if (err) throw err;
         console.log("Database created");
     });
