@@ -39,7 +39,7 @@ exports.connectDatabase = function() {
     });
 }
 
-function createTable() {
+exports.createTable = function() {
     let sql = `CREATE TABLE userScore (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), result INT)`;
     con.query(sql, function (err, result) {
         if (err) {
@@ -52,7 +52,7 @@ function createTable() {
     });
 }
 
-function closeConnection(target_connection) {
+exports.closeConnection = function(target_connection) {
     target_connnection.end(function (err) {
         if (err) {
             throw err;
