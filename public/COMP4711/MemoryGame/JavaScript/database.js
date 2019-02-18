@@ -22,7 +22,7 @@ exports.setUpDatabase = async function() {
     });
 }
 
-exports.connectDatabase = function() {
+function connectDatabase() {
     con = mysql.createConnection({
         host: "localhost",
         user: "root",
@@ -40,7 +40,7 @@ exports.connectDatabase = function() {
     });
 }
 
-exports.createTable = function() {
+function createTable() {
     let sql = `CREATE TABLE userScore (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), result INT)`;
     con.query(sql, function (err, result) {
         if (err) {
@@ -53,7 +53,7 @@ exports.createTable = function() {
     });
 }
 
-exports.closeConnection = function(target_connection) {
+function closeConnection(target_connection) {
     target_connnection.end(function (err) {
         if (err) {
             throw err;
