@@ -54,7 +54,7 @@ function createTable() {
 }
 
 function closeConnection(target_connection) {
-    target_connnection.end(function (err) {
+    target_connection.end(function (err) {
         if (err) {
             throw err;
         }
