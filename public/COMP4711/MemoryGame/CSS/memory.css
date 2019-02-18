@@ -1,0 +1,60 @@
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Verdana";
+}
+
+h1 {
+    margin: 0;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.score_board {
+    text-align: center;
+}
+
+.memory_game_area {
+    max-width: 500px;
+    max-height: 500px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+.memory_tiles {
+    /* width: 100vw; */
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    /* display: flex;
+    flex-wrap: wrap; */
+}
+
+.button_container {
+    margin: 20px;
+    text-align: center;
+}
+
+.rotateX180 {
+    transform: rotateX(180deg);
+    transition: all 1s ease-in-out;
+}
+
+.rotateX0 {
+    transform: rotateX(0deg);
+    transition: all 1s ease-in-out;
+}
+
+.rotateZ90 {
+    transform: rotateZ(90deg);
+    transition: all 1s ease-in-out;
+}

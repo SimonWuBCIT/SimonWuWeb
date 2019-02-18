@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <title>COMP 4711 Admin Questions</title>
+        <link rel="stylesheet" href="./CSS/memory.css">
+        <link rel="stylesheet" href="./CSS/mobile.css">
+        <link rel="icon" href="../../Assets/logo.png">
+
+        <!-- Google jQuery CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script src="./JavaScript/tile.js", type="text/javascript"></script>
+        <script src="./JavaScript/tile_manager.js", type="text/javascript"></script>
+        <script src="./JavaScript/game_manager.js", type="text/javascript"></script>
+        <script src="./JavaScript/memory.js", type="text/javascript"></script>
+    </head>
+    <body>
+        <h1>Memory Game</h1>
+        <div class="score_board">Score: 0</div>
+        <div class="memory_game_area">
+            <div class="memory_tiles">
+            </div>
+        </div>
+        <div class="button_container">
+            <button onclick="restart(3, 3, 4)">Restart</button>
+            <button onclick="terminate()">Terminate</button>
+        </div>
+    </body>
+</html>

@@ -3,6 +3,8 @@ const path = require("path");
 const app = express();
 const port = 3000;
 
+const database = require('./COMP4711/MemoryGame/JavaScript/database');
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/*', (req, res) => {
@@ -14,24 +16,14 @@ app.get('/hello', (req, res) => {
     res.send(`${d.toDateString()} : ${d.toTimeString()}`);
 });
 
-// app.get('/testdatabase', (req, res) => {
-//     let mysql = require('mysql');
+app.get('/COMP4711/MemoryGame/summary.html', async (req, res) => {
+    await database.setUpDatabase();
+    await database.createTable();
+});
 
-//     let con = mysql.createConnection({
-//         host: "localhost",
-//         user: "root",
-//         password: "",
-//     });
+app.get('/COMP4711/MemoryGame/leaderboard.html', async (req, res) => {
 
-//     let databaseScript = require('./database');
-
-//     con.connect(function (err) {
-//         if (err) throw err;
-//         console.log("Connected!");
-//         databaseScript.createDatabase();
-//         databaseScript.createTable();
-//     });
-// });
+});
 
 app.listen(port, () => console.log('Server running on port 3000'));
 
