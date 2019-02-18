@@ -18,6 +18,7 @@ app.get('/hello', (req, res) => {
 
 app.get('/COMP4711/MemoryGame/summary*', async (req, res) => {
     res.sendFile(__dirname, 'summary.html');
+    console.log(__dirname);
     console.log("Setup Database");
     database.setUpDatabase();
     console.log("Finished");
