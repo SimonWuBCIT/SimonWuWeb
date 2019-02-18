@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 let con;
 
-function setUpDatabase() {
+exports.setUpDatabase = async function() {
     let connect = mysql.createConnection({
         host: "localhost",
         user: "root",
@@ -16,12 +16,12 @@ function setUpDatabase() {
             if (err) throw err;
             console.log("Database created");
             closeConnection(connect);
-            //await connectDatabase();
+            await connectDatabase();
         });
     });
 }
 
-function connectDatabase() {
+exports.connectDatabase = function() {
     con = mysql.createConnection({
         host: "localhost",
         user: "root",
