@@ -16,7 +16,7 @@ function setUpDatabase() {
             if (err) throw err;
             console.log("Database created");
             closeConnection(connect);
-            await connectDatabase();
+            //await connectDatabase();
         });
     });
 }
