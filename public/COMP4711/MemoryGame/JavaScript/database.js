@@ -11,7 +11,7 @@ function setUpDatabase() {
         if (err) throw err;
         console.log("Connected!");
 
-        connect.query("CREATE DATABASE IF NOT EXISTS scoredb", aync function (err, result) {
+        connect.query("CREATE DATABASE IF NOT EXISTS scoredb", async function (err, result) {
             if (err) throw err;
             console.log("Database created");
             closeConnection(connect);
