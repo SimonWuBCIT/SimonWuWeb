@@ -18,8 +18,7 @@ app.get('/hello', (req, res) => {
 
 app.get('/COMP4711/MemoryGame/summary*', async (req, res) => {
     console.log("Setup Database");
-    await database.setUpDatabase();
-    await database.createTable();
+    database.setUpDatabase();
 });
 
 app.get('/COMP4711/MemoryGame/leaderboard*', async (req, res) => {

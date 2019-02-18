@@ -17,6 +17,7 @@ exports.setUpDatabase = async function() {
             console.log("Database created");
             closeConnection(connect);
             await connectDatabase();
+            await createTable();
         });
     });
 }
