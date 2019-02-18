@@ -1,3 +1,4 @@
+const mysql = require('mysql');
 let con;
 
 function setUpDatabase() {
