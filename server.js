@@ -16,13 +16,13 @@ app.get('/hello', (req, res) => {
     res.send(`${d.toDateString()} : ${d.toTimeString()}`);
 });
 
-app.get('/COMP4711/MemoryGame/summary', async (req, res) => {
+app.get('/COMP4711/MemoryGame/summary*', async (req, res) => {
     console.log("Setup Database");
-    await database.setUpDatabase();
+    database.setUpDatabase();
     await database.createTable();
 });
 
-app.get('/COMP4711/MemoryGame/leaderboard.html', async (req, res) => {
+app.get('/COMP4711/MemoryGame/leaderboard*', async (req, res) => {
 
 });
 

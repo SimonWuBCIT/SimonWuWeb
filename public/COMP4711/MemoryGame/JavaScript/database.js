@@ -1,6 +1,6 @@
 let con;
 
-function setUpDatabase() {
+async function setUpDatabase() {
     let connect = mysql.createConnection({
         host: "localhost",
         user: "root",
@@ -15,7 +15,7 @@ function setUpDatabase() {
             if (err) throw err;
             console.log("Database created");
             closeConnection(connect);
-            connectDatabase();
+            await connectDatabase();
         });
     });
 }
