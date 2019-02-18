@@ -23,7 +23,7 @@ function updateScore() {
 
 function gameEnd() {
     localStorage.setItem("score", score);
-    location.href = "./summary.html";
+    location.href = "./summary";
 }
 
 function terminate() {

@@ -19,6 +19,7 @@ app.get('/hello', (req, res) => {
 app.get('/COMP4711/MemoryGame/summary*', async (req, res) => {
     console.log("Setup Database");
     database.setUpDatabase();
+    res.sendFile(__dirname, './COMP4711/MemoryGame/summary.html');
 });
 
 app.get('/COMP4711/MemoryGame/leaderboard*', async (req, res) => {
