@@ -56,6 +56,7 @@ function levelUp() {
 function restart() {
     score = 0;
     special_flipped = 0;
+    setUpInitialGameState();
     next(current_column, current_row, special_total);
     
     let scoreElement = document.getElementsByClassName("score_board")[0];
