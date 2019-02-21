@@ -11,7 +11,7 @@ function updateScoreField() {
 function updateDatabase() {
     let playerName = document.getElementsByClassName("nameField")[0].value;
     let playerScore = window.localStorage.score;
-    $.post("https://story.simonwu.work:3000/result", {player: playerName, finalScore: playerScore});
+    $.post("https://story.simonwu.work:443/result", {player: playerName, finalScore: playerScore});
 }
 
 function returnToGame() {
