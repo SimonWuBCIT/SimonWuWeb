@@ -73,6 +73,8 @@ async function levelUpWait() {
     return new Promise(function () {
         setTimeout(function() {
             shrinkDiv();
+            let audio = new Audio('./Assets/Sounds/spray.mp3');
+            audio.play();
         }, 1000);
         setTimeout(function() {
             levelUp();

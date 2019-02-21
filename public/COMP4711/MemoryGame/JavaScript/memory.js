@@ -15,6 +15,8 @@ function initGame() {
 }
 
 async function start() {
+    let tile_container = document.getElementsByClassName("memory_tiles")[0];
+    tile_container.style.height = "0px";
     await initialShow();
 }
 
@@ -54,7 +56,7 @@ async function initialShow() {
     return new Promise(function() { 
         setTimeout(function() {
             expandDiv();
-        }, 1000);
+        }, 500);
         setTimeout(function() {
             tile_manager.flipSpecial();
         }, 2000);
