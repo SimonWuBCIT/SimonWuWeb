@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 let con;
 
-exports.setUpDatabase = async function() {
+exports.setUpDatabase = async function () {
     let connect = mysql.createConnection({
         host: "localhost",
         user: "root",
@@ -23,21 +23,22 @@ exports.setUpDatabase = async function() {
     });
 }
 
-exports.addEntry = async function(playerName, scoreValue) {
+exports.addEntry = async function (playerName, scoreValue) {
     await connectDatabase();
     await insertRow(playerName, scoreValue);
 }
 
-exports.getTopFive = async function() {
+exports.getTopFive = async function () {
     await connectDatabase();
 
     let sql = `SELECT * FROM userScore ORDER BY result DESC LIMIT 5`;
-    
-    con.query(sql, function (err, result) {
-        if (err) throw err;
-        return new Promise(function(resolve, reject) { 
-            console.log(result);
+
+    return new Promise(function (resolve, reject) {
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            // return new Promise(function(resolve, reject) { 
             resolve(result);
+            // });
         });
     });
 }
@@ -54,7 +55,7 @@ function connectDatabase() {
         if (err) throw err;
         console.log("Connected!");
         //createTable();
-        return new Promise(function() { 
+        return new Promise(function () {
             //do nothing;
         });
     });
@@ -68,7 +69,7 @@ function createTable() {
         } else {
             console.log("userScore table created");
         }
-        return new Promise(function() { 
+        return new Promise(function () {
             //do nothing;
         });
     });
@@ -79,7 +80,7 @@ function insertRow(playerName, scoreValue) {
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Inserted user and score into database");
-        return new Promise(function() { 
+        return new Promise(function () {
             //do nothing;
         });
     });
