@@ -7,7 +7,7 @@ const port = 3000;
 let database = require('./public/COMP4711/MemoryGame/JavaScript/database');
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use(parser.urlencoded({extended: false}));
+app.use(parser.urlencoded({extended: true}));
 app.use(parser.json());
 
 app.get('/*', (req, res) => {
