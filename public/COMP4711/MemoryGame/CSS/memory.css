@@ -43,6 +43,14 @@ h1 {
     text-align: center;
 }
 
+.currentUserContainer {
+    text-align: center;
+}
+
+.topFiveContainer {
+    text-align: center;
+}
+
 .button_container {
     margin: 20px;
     text-align: center;
