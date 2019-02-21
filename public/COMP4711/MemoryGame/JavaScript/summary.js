@@ -11,7 +11,7 @@ function updateScoreField() {
 function updateDatabase() {
     let player = document.getElementsByClassName("nameField")[0].value;
     let finalScore = window.localStorage.score;
-    $.post("http://localhost:3000/COMP4711/MemoryGame/summary/result", {player: player, finalScore: finalScore});
+    $.post("https://story.simonwu.work:3000/COMP4711/MemoryGame/summary/result", {player: player, finalScore: finalScore});
 }
 
 function returnToGame() {
