@@ -32,8 +32,8 @@ app.get('/COMP4711/MemoryGame/leaderboard', async (req, res) => {
 
 app.get('/tally', async (req, res) => {
     console.log("Got request for data");
-    let top_scorers = database.getTopFive()
-    .then(function(results) {
+    database.getTopFive().then(function(results) {
+        let top_scorers = results;
         let send_data = JSON.stringify(top_scorers);
         console.log(send_data);
         res.send(send_data);

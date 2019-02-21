@@ -35,7 +35,7 @@ exports.getTopFive = async function() {
     
     con.query(sql, function (err, result) {
         if (err) throw err;
-        return new Promise(function() { 
+        return new Promise(function(resolve, reject) { 
             console.log(result);
             resolve(result);
         });
