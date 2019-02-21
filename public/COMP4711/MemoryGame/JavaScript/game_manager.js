@@ -11,11 +11,11 @@ function setUpInitialGameState() {
     special_total = 4;
 }
 
-function updateScore() {
+async function updateScore() {
     let scoreElement = document.getElementsByClassName("score_board")[0];
     scoreElement.innerHTML = "Score: " + score;
     if (score < 0) {
-        gameEnd();
+        await displaySpecial();
     } else {
         determineProgress();
     }
@@ -54,7 +54,12 @@ function levelUp() {
 }
 
 function restart() {
+    score = 0;
+    special_flipped = 0;
     next(current_column, current_row, special_total);
+    
+    let scoreElement = document.getElementsByClassName("score_board")[0];
+    scoreElement.innerHTML = "Score: " + score;
 }
 
 async function next(x, y, specialCount) {
@@ -67,8 +72,22 @@ async function next(x, y, specialCount) {
 async function levelUpWait() {
     return new Promise(function () {
         setTimeout(function() {
+            shrinkDiv();
+        }, 1000);
+        setTimeout(function() {
             levelUp();
             next(current_column, current_row, special_total);
+        }, 2000);
+    });
+}
+
+async function displaySpecial() {
+    return new Promise(function () {
+        setTimeout(function () {
+            tile_manager.flipSpecial();
         }, 1000);
+        setTimeout(function () {
+            gameEnd();
+        }, 2000);
     });
 }

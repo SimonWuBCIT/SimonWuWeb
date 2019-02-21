@@ -55,19 +55,20 @@ class Manager {
     attachClick(tile) {
         let that = this;
         tile.get().onclick = function () {
-            that.flipTile(tile);
-            if (tile._type == "special") {
-                ++score;
-                ++special_flipped;
-            } else {
-                --score;
+            if (that.flipTile(tile) === true) {
+                if (tile._type == "special") {
+                    ++score;
+                    ++special_flipped;
+                } else {
+                    --score;
+                }
+                updateScore();
             }
-            updateScore();
         }
     }
 
     flipTile(tile) {
-        tile.flipBack();
+        return tile.flipBack();
     }
 
     flipSpecial() {
@@ -83,7 +84,7 @@ class Manager {
     }
 
     calculateDiagonal(x, y) {
-        return Math.sqrt(x*x + y*y);
+        return Math.sqrt(x * x + y * y);
     }
 
     populateSpecialRange(total) {
@@ -96,20 +97,20 @@ class Manager {
 
     shuffle(array) {
         let currentIndex = array.length, temporaryValue, randomIndex;
-      
+
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
-      
-          // Pick a remaining element...
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-      
-          // And swap it with the current element.
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
         }
-      
+
         return array;
-      }
+    }
 }

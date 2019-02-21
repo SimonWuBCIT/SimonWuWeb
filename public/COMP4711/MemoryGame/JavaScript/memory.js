@@ -40,17 +40,30 @@ function resetContainer() {
     tile_container.classList.remove("rotateZ90");
 }
 
+function shrinkDiv() {
+    let tiles_area = $('.memory_tiles');
+    tiles_area.animate({ height: '0' }, "fast");
+}
+
+function expandDiv() {
+    let tiles_area = $('.memory_tiles');
+    tiles_area.animate({ height: '100%' }, "fast");
+}
+
 async function initialShow() {
     return new Promise(function() { 
         setTimeout(function() {
-            tile_manager.flipSpecial();
+            expandDiv();
         }, 1000);
         setTimeout(function() {
-            tile_manager.unflipSpecial();
+            tile_manager.flipSpecial();
         }, 2000);
+        setTimeout(function() {
+            tile_manager.unflipSpecial();
+        }, 3000);
         setTimeout(function() {
             let tile_container = document.getElementsByClassName("memory_tiles")[0];
             tile_container.classList.add("rotateZ90");
-        }, 3000);
+        }, 4000);
     });
 }

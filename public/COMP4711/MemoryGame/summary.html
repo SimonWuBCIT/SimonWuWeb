@@ -13,12 +13,15 @@
     </head>
     <body>
         <h1>Summary</h1>
-        <div class="memory_game_area">
-            <div class="memory_tiles">
-            </div>
+        <div class="inputContainer">
+            <!-- <form action="/"> -->
+                Name: <input class="nameField" type="text"><br>
+                <p class="scoreDisplay">Score: </p>
+                <!-- <input type="submit" value="Submit"> -->
+            <!-- </form> -->
         </div>
         <div class="button_container">
-            <button onclick="">Submit</button>
+            <button onclick="updateDatabase()">Submit</button>
             <button onclick="returnToGame()">Restart</button>
         </div>
     </body>

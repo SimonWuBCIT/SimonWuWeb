@@ -3,6 +3,7 @@ class Tile {
         this._frontColor = "tan";
         this._backColor = "salmon";
         this._type = "regular";
+        this._flipped = false;
 
         this._element = document.createElement("div");
         this._element.style.backgroundColor = this._frontColor;
@@ -35,12 +36,26 @@ class Tile {
         this._element.classList.remove("rotateX180");
         this._element.classList.add("rotateX0");
         this._element.style.backgroundColor = this._frontColor;
+        this._flipped = false;
     }
 
     flipBack() {
+        if (this._flipped === true) {
+            return false;
+        }
         this._element.classList.remove("rotateX0");
         this._element.classList.add("rotateX180");
         this._element.style.backgroundColor = this._backColor;
+        this._flipped = true;
+        return true;
+    }
+
+    getFlippedStatus() {
+        return this._flipped;
+    }
+
+    setFlippedStatus(status) {
+        this._flipped = status;
     }
 
     reset() {

@@ -18,8 +18,14 @@ exports.setUpDatabase = async function() {
             closeConnection(connect);
             await connectDatabase();
             await createTable();
+            await closeConnection(con);
         });
     });
+}
+
+exports.addEntry = async function(playerName, scoreValue) {
+    await connectDatabase();
+    await insertRow(playerName, scoreValue);
 }
 
 function connectDatabase() {
@@ -45,8 +51,20 @@ function createTable() {
     con.query(sql, function (err, result) {
         if (err) {
             console.log("userScore table already exists");
+        } else {
+            console.log("userScore table created");
         }
-        console.log("userScore table created");
+        return new Promise(function() { 
+            //do nothing;
+        });
+    });
+}
+
+function insertRow(playerName, scoreValue) {
+    let sql = `INSERT INTO userScore (name, result) VALUES ("${playerName}", ${scoreValue})`;
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("Inserted user and score into database");
         return new Promise(function() { 
             //do nothing;
         });
