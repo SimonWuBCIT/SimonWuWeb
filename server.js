@@ -31,6 +31,7 @@ app.get('/COMP4711/MemoryGame/leaderboard', async (req, res) => {
 });
 
 app.post('/COMP4711/MemoryGame/summary/result', function(req, res) {
+    console.log("Got data");
     let player = req.body.player;
     let finalScore = req.body.finalScore;
 
