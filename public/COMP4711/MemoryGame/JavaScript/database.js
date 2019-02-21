@@ -53,7 +53,7 @@ function connectDatabase() {
         con.connect(function (err) {
             if (err) throw err;
             console.log("Connected!");
-
+            resolve();
             // return new Promise(function () {
             // });
         });
@@ -73,6 +73,7 @@ function createTable() {
             // return new Promise(function () {
             //     //do nothing;
             // });
+            resolve();
         });
     });
 }
@@ -88,6 +89,7 @@ function insertRow(playerName, scoreValue) {
             //     //do nothing;
             // });
         });
+        resolve();
     });
 }
 
