@@ -12,6 +12,7 @@ function updateDatabase() {
     let playerName = document.getElementsByClassName("nameField")[0].value;
     let playerScore = window.localStorage.score;
     $.post("https://story.simonwu.work:443/result", {player: playerName, finalScore: playerScore});
+    location.href="./leaderboard";
 }
 
 function returnToGame() {

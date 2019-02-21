@@ -28,6 +28,19 @@ exports.addEntry = async function(playerName, scoreValue) {
     await insertRow(playerName, scoreValue);
 }
 
+exports.getTopFive = async function() {
+    await connectDatabase();
+    
+    let sql = `SELECT * FROM userScore GROUP BY result ORDER BY result DESC LIMIT 5`;
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("Inserted user and score into database");
+        return new Promise(function() { 
+            return result;
+        });
+    });
+}
+
 function connectDatabase() {
     con = mysql.createConnection({
         host: "localhost",

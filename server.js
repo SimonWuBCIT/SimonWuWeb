@@ -27,7 +27,14 @@ app.get('/COMP4711/MemoryGame/summary', async (req, res) => {
 });
 
 app.get('/COMP4711/MemoryGame/leaderboard', async (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "COMP4711", "MemoryGame", "leaderboard.html"));
+});
 
+app.get('/tally', (req, res) => {
+    console.log("Got request for data");
+    let top_scorers = await database.getTopFive();
+    let send_data = JSON.stringify(top_scorers);
+    res.send(send_data);
 });
 
 app.post('/result', (req, res) => {
