@@ -69,3 +69,28 @@ async function initialShow() {
         }, 4000);
     });
 }
+
+async function levelUpWait() {
+    return new Promise(function () {
+        setTimeout(function() {
+            shrinkDiv();
+            let audio = new Audio('./Assets/Sounds/spray.mp3');
+            audio.play();
+        }, 1000);
+        setTimeout(function() {
+            levelUp();
+            next(current_column, current_row, special_total);
+        }, 2000);
+    });
+}
+
+async function displaySpecial() {
+    return new Promise(function () {
+        setTimeout(function () {
+            tile_manager.flipSpecial();
+        }, 1000);
+        setTimeout(function () {
+            gameEnd();
+        }, 2000);
+    });
+}
