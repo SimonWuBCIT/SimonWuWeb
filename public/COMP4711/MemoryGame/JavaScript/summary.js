@@ -9,9 +9,9 @@ function updateScoreField() {
 }
 
 function updateDatabase() {
-    let player = document.getElementsByClassName("nameField")[0].value;
-    let finalScore = window.localStorage.score;
-    $.post("https://story.simonwu.work:3000/COMP4711/MemoryGame/summary/result", {player: player, finalScore: finalScore});
+    let playerName = document.getElementsByClassName("nameField")[0].value;
+    let playerScore = window.localStorage.score;
+    $.post("https://story.simonwu.work:3000/result", {player: playerName, finalScore: playerScore});
 }
 
 function returnToGame() {
