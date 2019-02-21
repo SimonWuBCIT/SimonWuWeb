@@ -1,6 +1,7 @@
 let req = new XMLHttpRequest();
 
 window.onload = function() {
+    populateCurrentUserScore();
     getTopFive();
 }
 
