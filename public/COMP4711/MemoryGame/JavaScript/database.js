@@ -34,7 +34,6 @@ exports.getTopFive = async function() {
     let sql = `SELECT * FROM userScore ORDER BY result DESC LIMIT 5`;
     con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log("Inserted user and score into database");
         return new Promise(function() { 
             return result;
         });

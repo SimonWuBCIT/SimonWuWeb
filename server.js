@@ -34,6 +34,7 @@ app.get('/tally', async (req, res) => {
     console.log("Got request for data");
     let top_scorers = await database.getTopFive();
     let send_data = JSON.stringify(top_scorers);
+    console.log(send_data);
     res.send(send_data);
 });
 
