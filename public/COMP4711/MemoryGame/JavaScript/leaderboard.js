@@ -1,4 +1,5 @@
 let req = new XMLHttpRequest();
+let temp_response;
 
 window.onload = function() {
     getTopFive();
@@ -19,7 +20,7 @@ function getTopFive() {
 function load() {
     let response = this.responseText;
     let parse_response = JSON.parse(response);
-    
+    temp_response = parse_response;
     updateLeaderboard(parse_response);
     console.log(parse_response);
 }
