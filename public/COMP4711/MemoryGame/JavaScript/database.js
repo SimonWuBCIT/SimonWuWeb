@@ -32,10 +32,12 @@ exports.getTopFive = async function() {
     await connectDatabase();
 
     let sql = `SELECT * FROM userScore ORDER BY result DESC LIMIT 5`;
+    
     con.query(sql, function (err, result) {
         if (err) throw err;
         return new Promise(function() { 
-            return result;
+            console.log(result);
+            resolve(result);
         });
     });
 }
