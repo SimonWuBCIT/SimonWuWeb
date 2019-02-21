@@ -1,5 +1,4 @@
 let req = new XMLHttpRequest();
-let temp_response;
 
 window.onload = function() {
     getTopFive();
@@ -20,19 +19,23 @@ function getTopFive() {
 function load() {
     let response = this.responseText;
     let parse_response = JSON.parse(response);
-    temp_response = parse_response;
+
     updateLeaderboard(parse_response);
     console.log(parse_response);
+}
+
+function populateCurrentUserScore() {
+    let current_container = document.getElementsByClassName("currentUserContainer")[0];
+    let current_player = document.createElement("p");
+    current_player.innerHTML = window.localStorage.player + " " + window.localStorage.score;
+    current_container.appendChild(current_player);
 }
 
 function updateLeaderboard(top_results) {
     let top_container = document.getElementsByClassName("topFiveContainer")[0];
     for (let i = 0; i < top_results.length; ++i) {
         let player_container = document.createElement("p");
-        player_container.innerHTML = top_results.name + top_results.result;
+        player_container.innerHTML = top_results[i].name + " " + top_results[i].result;
         top_container.appendChild(player_container);
-        
-        let line_break = document.createElement("br");
-        top_container.appendChild(line_break);
     }
 }
