@@ -17,6 +17,12 @@ h1 {
     text-align: center;
 }
 
+button {
+    width: 20vw;
+    height: 10vh;
+    background-color: silver;
+}
+
 .score_board {
     text-align: center;
 }

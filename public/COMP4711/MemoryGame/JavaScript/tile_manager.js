@@ -54,6 +54,7 @@ class Manager {
 
     attachClick(tile) {
         let that = this;
+        let downgrade = false;
         tile.get().onclick = function () {
             if (that.flipTile(tile) === true) {
                 if (tile._type == "special") {
@@ -61,8 +62,9 @@ class Manager {
                     ++special_flipped;
                 } else {
                     --score;
+                    downgrade = true;
                 }
-                updateScore();
+                updateScore(downgrade);
             }
         }
     }
@@ -95,20 +97,28 @@ class Manager {
         return this.shuffle(specialRange);
     }
 
+    disableAllClick() {
+        for (let i = 0; i < this._floor.length; ++i) {
+            this._floor[i].disableClickEvent();
+        }
+    }
+
+    enableAllClick() {
+        for (let i = 0; i < this._floor.length; ++i) {
+            this._floor[i].enableClickEvent();
+        }
+    }
+
     shuffle(array) {
-        let currentIndex = array.length, temporaryValue, randomIndex;
+        let current_index = array.length, temp, random_index;
 
-        // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
+        while (0 !== current_index) {
+            random_index = Math.floor(Math.random() * current_index);
+            current_index -= 1;
 
-            // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
-
-            // And swap it with the current element.
-            temporaryValue = array[currentIndex];
-            array[currentIndex] = array[randomIndex];
-            array[randomIndex] = temporaryValue;
+            temp = array[current_index];
+            array[current_index] = array[random_index];
+            array[random_index] = temp;
         }
 
         return array;

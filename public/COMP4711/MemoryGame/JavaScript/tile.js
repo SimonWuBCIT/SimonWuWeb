@@ -58,6 +58,14 @@ class Tile {
         this._flipped = status;
     }
 
+    disableClickEvent() {
+        this._element.style.pointerEvents = 'none';
+    }
+
+    enableClickEvent() {
+        this._element.style.pointerEvents = 'auto';
+    }
+
     reset() {
         this.flipFront();
         this._element.classList.remove("rotateX0");

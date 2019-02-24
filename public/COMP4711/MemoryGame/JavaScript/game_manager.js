@@ -11,11 +11,20 @@ function setUpInitialGameState() {
     special_total = 4;
 }
 
-async function updateScore() {
+async function updateScore(downgrade) {
     let scoreElement = document.getElementsByClassName("score_board")[0];
     scoreElement.innerHTML = "Score: " + score;
+
     if (score < 0) {
+        disableClick();
+        await displaySpecial().then(() => {
+            gameEnd();
+        });
+    } else if (downgrade) {
+        disableClick();
         await displaySpecial();
+        levelWait(false)
+        return;
     } else {
         determineProgress();
     }
@@ -35,7 +44,7 @@ function terminate() {
 
 function determineProgress() {
     if (special_flipped >= special_total) {
-        levelUpWait();
+        levelWait(true);
     }
 }
 
@@ -49,6 +58,20 @@ function levelUp() {
         special_total = 4;
         ++current_column;
         ++current_row;
+        special_flipped = 0;
+    }
+}
+
+function levelDown() {
+    if (special_total >= 4) {
+        --special_total;
+        special_flipped = 0;
+        return;
+    }
+    if (current_column > 3) {
+        --current_column;
+        --current_row;
+        special_total = Math.floor(current_column * current_row * 0.3);
         special_flipped = 0;
     }
 }

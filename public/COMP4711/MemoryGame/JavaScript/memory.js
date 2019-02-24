@@ -52,7 +52,16 @@ function expandDiv() {
     tiles_area.animate({ height: '100%' }, "fast");
 }
 
+function disableClick() {
+    tile_manager.disableAllClick();
+}
+
+function enableClick() {
+    tile_manager.enableAllClick();
+}
+
 async function initialShow() {
+    disableClick();
     return new Promise(function() { 
         setTimeout(function() {
             expandDiv();
@@ -67,10 +76,13 @@ async function initialShow() {
             let tile_container = document.getElementsByClassName("memory_tiles")[0];
             tile_container.classList.add("rotateZ90");
         }, 4000);
+        setTimeout(function() {
+            enableClick();
+        }, 5000);
     });
 }
 
-async function levelUpWait() {
+async function levelWait(up) {
     return new Promise(function () {
         setTimeout(function() {
             shrinkDiv();
@@ -78,19 +90,24 @@ async function levelUpWait() {
             audio.play();
         }, 1000);
         setTimeout(function() {
-            levelUp();
+            if (up) {
+                levelUp();
+            } else {
+                levelDown();
+            }
             next(current_column, current_row, special_total);
         }, 2000);
     });
 }
 
 async function displaySpecial() {
-    return new Promise(function () {
+    return new Promise(function (resolve) {
         setTimeout(function () {
             tile_manager.flipSpecial();
         }, 1000);
         setTimeout(function () {
-            gameEnd();
+            //gameEnd();
+            resolve();
         }, 2000);
     });
 }
