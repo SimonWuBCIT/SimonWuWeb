@@ -60,6 +60,7 @@ class Manager {
                 if (tile._type == "special") {
                     ++score;
                     ++special_flipped;
+                    downgrade = false;
                 } else {
                     --score;
                     downgrade = true;

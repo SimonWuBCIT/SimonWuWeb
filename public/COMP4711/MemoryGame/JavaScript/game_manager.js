@@ -51,29 +51,23 @@ function determineProgress() {
 function levelUp() {
     if (special_total < current_column * current_row * 0.3) {
         ++special_total;
-        special_flipped = 0;
-        return;
-    }
-    if (current_column < 7) {
+    } else if (current_column < 7) {
         special_total = 4;
         ++current_column;
         ++current_row;
-        special_flipped = 0;
     }
+    special_flipped = 0;
 }
 
 function levelDown() {
     if (special_total >= 4) {
         --special_total;
-        special_flipped = 0;
-        return;
-    }
-    if (current_column > 3) {
+    } else if (current_column > 3) {
         --current_column;
         --current_row;
         special_total = Math.floor(current_column * current_row * 0.3);
-        special_flipped = 0;
     }
+    special_flipped = 0;
 }
 
 function restart() {
