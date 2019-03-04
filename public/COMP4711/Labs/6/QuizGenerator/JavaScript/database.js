@@ -67,7 +67,7 @@ function connectDatabase() {
 }
 
 function createTable() {
-    let sql = `CREATE TABLE questions (id INT AUTO_INCREMENT PRIMARY KEY, topic VARCHAR(255), options VARCHAR(1024), correctAnswer VARCHAR(10))`;
+    let sql = `CREATE TABLE questions (id INT AUTO_INCREMENT PRIMARY KEY, topic VARCHAR(255), selection VARCHAR(1024), correctAnswer VARCHAR(10))`;
 
     return new Promise(function (resolve) {
         con.query(sql, function (err, result) {
@@ -82,15 +82,19 @@ function createTable() {
 }
 
 function insertRow(topic, options, correctAnswer) {
-    let sql = `INSERT INTO questions (topic, options, correctAnswer) VALUES ("${topic}", "${options}", "${correctAnswer}")`;
+    let sql = `INSERT INTO questions (topic, selection, correctAnswer) VALUES ("${topic}", "${options}", "${correctAnswer}")`;
 
     return new Promise(function (resolve) {
         con.query(sql, function (err, result) {
             if (err) throw err;
-            console.log("Inserted user and score into database");
+            console.log("Inserted topic, selection, and answer into database");
         });
         resolve();
     });
+}
+
+function sanitize() {
+
 }
 
 function closeConnection(target_connection) {
