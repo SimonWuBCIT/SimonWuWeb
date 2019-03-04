@@ -53,7 +53,7 @@ app.post('/result', (req, res) => {
 app.get('/getQuiz', (req, res) => {
     console.log("Got request for quiz questions");
     quiz_database.getRecords().then(function(results) {
-        let data = result
+        let data = results
         let send_data = JSON.stringify(data);
         res.send(send_data);
     });
