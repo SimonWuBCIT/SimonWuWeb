@@ -31,7 +31,8 @@ exports.addEntry = async function (question_list) {
 
     for (let i = 0; i < question_list.length; ++i) {
         let options = JSON.stringify(question_list[i].options);
-        console.log(options);
+        sanitize(options);
+        //console.log(options);
         await insertRow(question_list[i].topic, options, question_list[i].correct_answer);
     }
 }
@@ -93,8 +94,12 @@ function insertRow(topic, options, correctAnswer) {
     });
 }
 
-function sanitize() {
-
+function sanitize(json_string) {
+    for (let i = 0; i < json_string.length; ++i) {
+        if (json_string[i] == "\"") {
+            json_string[i] == "'";
+        }
+    }
 }
 
 function closeConnection(target_connection) {
