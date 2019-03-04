@@ -50,6 +50,15 @@ app.post('/result', (req, res) => {
     res.end("yes");
 });
 
+app.post.get('/getQuiz', (req, res) => {
+    console.log("Got request for quiz questions");
+    quiz_database.getRecords().then(function(results) {
+        let data = result
+        let send_data = JSON.stringify(data);
+        res.send(send_data);
+    });
+});
+
 app.post('/quizQuestions', async (req, res) => {
     console.log("Setup Database");
     await quiz_database.setUpDatabase();

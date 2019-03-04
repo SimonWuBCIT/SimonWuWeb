@@ -1,7 +1,9 @@
 let number_of_questions = 0;
+let req = new XMLHttpRequest();
 
 window.onload = function() {
-    populate_questions();
+    //populate_questions();
+    getQuestions();
     create_button(document.getElementsByClassName("button_container")[0], strings[document.documentElement.lang].add_text, "add_button");
     create_button(document.getElementsByClassName("button_container")[0], strings[document.documentElement.lang].submit_text, "submit_button");
 
@@ -77,9 +79,9 @@ function create_button(container, button_text, class_name) {
     return button;
 }
 
-function populate_questions() {
-    let raw_data = window.localStorage.getItem("questions");
-    let data = JSON.parse(raw_data); 
+function populate_questions(data) {
+    //let raw_data = window.localStorage.getItem("questions");
+    //let data = JSON.parse(raw_data); 
     let question_div;
     let answer_list = [];
     let answer_count = 0;
@@ -96,10 +98,10 @@ function populate_questions() {
             
             answer_list = question_div.querySelectorAll("input.answer_option");
             for (answer_count = 0; answer_count < answer_list.length; ++answer_count) {
-                answer_list[answer_count].value = data[i].options[answer_count];
+                answer_list[answer_count].value = data[i].selection[answer_count];
             }
 
-            answer_radio = question_div.querySelectorAll('[type="radio"]')[data[i].correct_answer];
+            answer_radio = question_div.querySelectorAll('[type="radio"]')[data[i].correctAnswer];
             answer_radio.checked = true;
         }
     }
@@ -155,4 +157,20 @@ function load_question(question_number = 1) {
 function updateDatabase(my_questions) {
     let json_questions = JSON.stringify(my_questions);
     $.post("https://story.simonwu.work:443/quizQuestions", {question_list: json_questions});
+}
+
+function getQuestions() {
+    let url = "https://story.simonwu.work:443/getQuiz";
+
+    req.open('GET', url, true);
+    req.addEventListener('load', load);
+    req.send();
+}
+
+function load() {
+    let response = this.responseText;
+    let parse_response = JSON.parse(response);
+
+    console.log(parse_response);
+    populate_questions(parse_response);
 }

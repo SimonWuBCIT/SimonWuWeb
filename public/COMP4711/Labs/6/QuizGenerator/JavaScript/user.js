@@ -1,7 +1,8 @@
 let list_of_answers = [];
 
 window.onload = function() {
-    retrieveQuiz();
+    //retrieveQuiz();
+    getQuestions();
 }
 
 function create_button(container, button_text, class_name) {
@@ -43,9 +44,9 @@ function validate_answers() {
     }
 }
 
-function retrieveQuiz () {
-    let raw_data = window.localStorage.getItem("questions");
-    let data = JSON.parse(raw_data); 
+function retrieveQuiz (data) {
+    //let raw_data = window.localStorage.getItem("questions");
+    //let data = JSON.parse(raw_data); 
     let question_div;
     let answer_list = [];
     let answer_count = 0;
@@ -63,10 +64,10 @@ function retrieveQuiz () {
             
             answer_list = question_div.querySelectorAll("label.answer_option");
             for (answer_count = 0; answer_count < answer_list.length; ++answer_count) {
-                answer_list[answer_count].innerHTML = data[i].options[answer_count];
+                answer_list[answer_count].innerHTML = data[i].selection[answer_count];
             }
 
-            list_of_answers.push(data[i].correct_answer);
+            list_of_answers.push(data[i].correctAnswer);
         }
         create_button(document.getElementsByClassName("button_container")[0], strings[document.documentElement.lang].submit_text, "submit_button");
         bind_submit_button();
@@ -113,4 +114,20 @@ function load_question(question_number = 1) {
     }
 
     document.getElementsByClassName("list_of_questions")[0].appendChild(question_div);
+}
+
+function getQuestions() {
+    let url = "https://story.simonwu.work:443/getQuiz";
+
+    req.open('GET', url, true);
+    req.addEventListener('load', load);
+    req.send();
+}
+
+function load() {
+    let response = this.responseText;
+    let parse_response = JSON.parse(response);
+
+    console.log(parse_response);
+    retrieveQuiz(parse_response);
 }

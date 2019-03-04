@@ -37,15 +37,19 @@ exports.addEntry = async function (question_list) {
     }
 }
 
-exports.getTopFive = async function () {
+exports.getRecords = async function () {
     await connectDatabase();
 
-    let sql = `SELECT * FROM userScore ORDER BY result DESC LIMIT 5`;
+    let sql = `SELECT * FROM quizQuestions`;
 
     return new Promise(function (resolve) {
         con.query(sql, function (err, result) {
             if (err) throw err;
-            resolve(result);
+            let refined_result = result;
+            for (let i = 0; i < result.length; ++i) {
+                refined_result[i].selection = unsanitize(result[i].selection);
+            }
+            resolve(refined_result);
         });
     });
 }
@@ -82,6 +86,19 @@ function createTable() {
     });
 }
 
+function dropTable() {
+    let sql  = "DROP TABLE IF EXISTS quizQuestions";
+
+    return new Promise(function (resolve) {
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            
+            console.log("quizQuestions table dropped");
+            resolve();
+        });
+    })
+}
+
 function insertRow(topic, options, correctAnswer) {
     let sql = `INSERT INTO quizQuestions (topic, selection, correctAnswer) VALUES ("${topic}", "${options}", "${correctAnswer}")`;
 
@@ -99,6 +116,19 @@ function sanitize(old_string) {
     for (let i = 0; i < old_string.length; ++i) {
         if (old_string[i] === "\"") {
             json_string += "\\\"";
+        } else {
+            json_string += old_string[i];
+        }
+    }
+    console.log(json_string);
+    return json_string;
+}
+
+function unsanitize(old_string) {
+    let json_string = "";
+    for (let i = 0; i < old_string.length; ++i) {
+        if (old_string[i] === "\\") {
+            continue;
         } else {
             json_string += old_string[i];
         }
