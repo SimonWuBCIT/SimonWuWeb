@@ -9,12 +9,12 @@ exports.setUpDatabase = async function () {
     });
 
     return new Promise(function (resolve) {
-        connect.connect(function (err) {
+        connect.connect(async function (err) {
             if (err) throw err;
             console.log("Connected!");
 
             await dropTable();
-            
+
             connect.query("CREATE DATABASE IF NOT EXISTS quizdb", async function (err, result) {
                 if (err) throw err;
                 console.log("Database created");
