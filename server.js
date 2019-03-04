@@ -50,7 +50,7 @@ app.post('/result', (req, res) => {
     res.end("yes");
 });
 
-app.post.get('/getQuiz', (req, res) => {
+app.get('/getQuiz', (req, res) => {
     console.log("Got request for quiz questions");
     quiz_database.getRecords().then(function(results) {
         let data = result
