@@ -67,7 +67,7 @@ function connectDatabase() {
 }
 
 function createTable() {
-    let sql = `CREATE TABLE questions (id INT AUTO_INCREMENT PRIMARY KEY, topic VARCHAR(255), selection VARCHAR(1024), correctAnswer VARCHAR(10))`;
+    let sql = `CREATE TABLE quizQuestions (id INT AUTO_INCREMENT PRIMARY KEY, topic VARCHAR(255), selection VARCHAR(1024), correctAnswer VARCHAR(255))`;
 
     return new Promise(function (resolve) {
         con.query(sql, function (err, result) {
@@ -82,7 +82,7 @@ function createTable() {
 }
 
 function insertRow(topic, options, correctAnswer) {
-    let sql = `INSERT INTO questions (topic, selection, correctAnswer) VALUES ("${topic}", "${options}", "${correctAnswer}")`;
+    let sql = `INSERT INTO quizQuestions (topic, selection, correctAnswer) VALUES ("${topic}", "${options}", "${correctAnswer}")`;
 
     return new Promise(function (resolve) {
         con.query(sql, function (err, result) {
