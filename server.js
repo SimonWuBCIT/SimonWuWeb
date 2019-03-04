@@ -5,6 +5,7 @@ const app = express();
 const port = 3000;
 
 let database = require('./public/COMP4711/MemoryGame/JavaScript/database');
+let quiz_database = require('./public/COMP4711/Labs/6/QuizGenerator/JavaScript/database');
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(parser.urlencoded({extended: true}));
@@ -47,6 +48,17 @@ app.post('/result', (req, res) => {
 
     database.addEntry(player, finalScore);
     res.end("yes");
+});
+
+app.post('/quizQuestions', async (req, res) => {
+    console.log("Setup Database");
+    await quiz_database.setUpDatabase();
+
+    console.log("Got data");
+    let json_question = req.body.question_list;
+    let parsed_question = JSON.parse(json_question);
+    quiz_database.addEntry(parsed_question); 
+    res.end("yes");   
 });
 
 app.listen(port, () => console.log('Server running on port 3000'));
