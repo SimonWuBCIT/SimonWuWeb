@@ -94,12 +94,16 @@ function insertRow(topic, options, correctAnswer) {
     });
 }
 
-function sanitize(json_string) {
-    for (let i = 0; i < json_string.length; ++i) {
-        if (json_string[i] === "\"") {
-            json_string[i] = "'";
+function sanitize(old_string) {
+    let json_string = "";
+    for (let i = 0; i < old_string.length; ++i) {
+        if (old_string[i] === "\"") {
+            json_string += "'"
+        } else {
+            json_string += old_string[i];
         }
     }
+    console.log(json_string);
     return json_string;
 }
 
