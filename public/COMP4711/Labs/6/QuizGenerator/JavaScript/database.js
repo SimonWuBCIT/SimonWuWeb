@@ -54,7 +54,7 @@ function connectDatabase() {
         host: "localhost",
         user: "root",
         password: "",
-        database: "scoredb",
+        database: "quizdb",
     });
 
     return new Promise(function (resolve) {
