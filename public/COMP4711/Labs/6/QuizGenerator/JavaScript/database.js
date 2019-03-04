@@ -31,6 +31,7 @@ exports.addEntry = async function (question_list) {
 
     for (let i = 0; i < question_list.length; ++i) {
         let options = JSON.stringify(question_list[i].options);
+        console.log(options);
         await insertRow(question_list[i].topic, options, question_list[i].correct_answer);
     }
 }
