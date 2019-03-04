@@ -33,7 +33,7 @@ exports.addEntry = async function (question_list) {
         let raw_options = JSON.stringify(question_list[i].options);
         let options = sanitize(raw_options);
         console.log(options);
-        await insertRow(question_list[i].topic, options, question_list[i].correct_answer);
+        await insertRow(question_list[i].topic, "nothing", question_list[i].correct_answer);
     }
 }
 
