@@ -96,10 +96,11 @@ function insertRow(topic, options, correctAnswer) {
 
 function sanitize(json_string) {
     for (let i = 0; i < json_string.length; ++i) {
-        if (json_string[i] == "\"") {
-            json_string[i] == "'";
+        if (json_string[i] === "\"") {
+            json_string[i] = "'";
         }
     }
+
 }
 
 function closeConnection(target_connection) {
