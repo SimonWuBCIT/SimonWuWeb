@@ -1,4 +1,5 @@
 let list_of_answers = [];
+let req = new XMLHttpRequest();
 
 window.onload = function() {
     //retrieveQuiz();
