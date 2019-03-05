@@ -68,7 +68,9 @@ function connectDatabase() {
     return new Promise(function (resolve) {
         con.connect(function (err) {
             if (err) {
-                exports.setUpDatabase();
+                await exports.setUpDatabase();
+                await dropTable();
+                await createTable();
             }
             console.log("Connected!");
             resolve();
