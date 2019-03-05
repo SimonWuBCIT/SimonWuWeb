@@ -72,6 +72,8 @@ function connectDatabase() {
                 await exports.setUpDatabase();
                 await dropTable();
                 await createTable();
+                await connectDatabase();
+                resolve();
             }
             console.log("Connected!");
             resolve();
