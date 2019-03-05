@@ -46,7 +46,10 @@ exports.getRecords = async function () {
 
     return new Promise(function (resolve) {
         con.query(sql, function (err, result) {
-            if (err) throw err;
+            if (err) {
+                await createTable();
+                resolve(exports.getRecords());
+            }
             let refined_result = result;
             for (let i = 0; i < result.length; ++i) {
                 console.log(refined_result[i].selection);
@@ -72,8 +75,6 @@ function connectDatabase() {
                 await exports.setUpDatabase();
                 await dropTable();
                 await createTable();
-                await connectDatabase();
-                resolve();
             }
             console.log("Connected!");
             resolve();
@@ -97,7 +98,7 @@ function createTable() {
 }
 
 function dropTable() {
-    let sql  = "DROP TABLE IF EXISTS quizQuestions";
+    let sql = "DROP TABLE IF EXISTS quizQuestions";
 
     return new Promise(function (resolve) {
         con.query(sql, function (err, result) {
