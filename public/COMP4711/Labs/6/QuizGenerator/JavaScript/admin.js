@@ -174,8 +174,8 @@ function load() {
     for (let i = 0; i < parse_response.length; ++i) {
         test = (parse_response[i].selection);
         console.log(test);
-        
-        parse_response[i].selection = JSON.parse(parse_response[i].selection);
+        let tempString = parse_response[i].selection.substring(1, parse_response[i].selection.length - 2);
+        parse_response[i].selection = JSON.parse(tempString);
     }
 
     console.log(parse_response);
