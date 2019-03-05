@@ -171,7 +171,7 @@ function load() {
     let response = this.responseText;
     let parse_response = JSON.parse(response);
     for (let i = 0; i < parse_response.length; ++i) {
-        console.log(parse_reponse[i].selection);
+        console.log(parse_response[i].selection);
         parse_response[i].selection = JSON.parse(parse_response[i].selection);
     }
 
