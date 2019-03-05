@@ -170,7 +170,9 @@ function getQuestions() {
 function load() {
     let response = this.responseText;
     let parse_response = JSON.parse(response);
-    parse_response.selection = JSON.parse(parse_response.selection);
+    for (let i = 0; i < parse_response.length; ++i) {
+        parse_response[i].selection = JSON.parse(parse_response[i].selection);
+    }
 
     console.log(parse_response);
     populate_questions(parse_response);
