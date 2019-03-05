@@ -54,7 +54,7 @@ exports.getRecords = async function () {
             for (let i = 0; i < result.length; ++i) {
                 console.log(refined_result[i].selection);
                 //refined_result[i].selection = JSON.parse(unsanitize(result[i].selection));
-                refined_result[i].selection = JSON.parse(result[i].selection);
+                //refined_result[i].selection = JSON.parse(result[i].selection);
             }
             resolve(refined_result);
         });
