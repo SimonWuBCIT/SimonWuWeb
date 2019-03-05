@@ -49,11 +49,11 @@ function storeQuiz() {
     for (let i = 0; (question_div = document.getElementsByClassName("lab_questions")[i]) != undefined; ++i) {
         question_list[i] = new Question();
         question_list[i].number = i + 1
-        question_list[i].topic = question_div.querySelector("textarea").value;
+        question_list[i].topic = sanitize(question_div.querySelector("textarea").value);
         
         answer_list = question_div.querySelectorAll("input.answer_option");
         for (answer_count = 0; answer_count < answer_list.length; ++answer_count) {
-            question_list[i].options[answer_count] = answer_list[answer_count].value;
+            question_list[i].options[answer_count] = sanitize(answer_list[answer_count].value);
         }
 
         answer_radio = question_div.querySelectorAll('[type="radio"]');
@@ -173,4 +173,17 @@ function load() {
 
     console.log(parse_response);
     populate_questions(parse_response);
+}
+
+function sanitize(old_string) {
+    let json_string = "";
+    for (let i = 0; i < old_string.length; ++i) {
+        if (old_string[i] === "\"") {
+            json_string += "\'";
+        } else {
+            json_string += old_string[i];
+        }
+    }
+    console.log(json_string);
+    return json_string;
 }

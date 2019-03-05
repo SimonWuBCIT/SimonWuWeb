@@ -35,7 +35,7 @@ exports.addEntry = async function (question_list) {
         //let options = sanitize(raw_options);
         let options = con.escape(raw_options);
         console.log(options);
-        await insertRow(question_list[i].topic, options, question_list[i].correct_answer);
+        await insertRow(con.escape(question_list[i].topic), options, question_list[i].correct_answer);
     }
 }
 
