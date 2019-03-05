@@ -179,7 +179,7 @@ function sanitize(old_string) {
     let json_string = "";
     for (let i = 0; i < old_string.length; ++i) {
         if (old_string[i] === "\"") {
-            json_string += "\'";
+            json_string += "\\\"";
         } else {
             json_string += old_string[i];
         }
