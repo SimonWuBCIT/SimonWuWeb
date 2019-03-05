@@ -98,8 +98,9 @@ function dropTable() {
 
     return new Promise(function (resolve) {
         con.query(sql, function (err, result) {
-            if (err) throw err;
-            
+            if (err) {
+                console.log("no such table");
+            };
             console.log("quizQuestions table dropped");
             resolve();
         });
