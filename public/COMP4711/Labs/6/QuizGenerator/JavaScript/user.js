@@ -135,7 +135,10 @@ function getQuestions() {
 function load() {
     let response = this.responseText;
     let parse_response = JSON.parse(response);
-
+    for (let i = 0; i < parse_response.length; ++i) {
+        let tempString = parse_response[i].selection.substring(1, parse_response[i].selection.length - 1);
+        parse_response[i].selection = JSON.parse(tempString);
+    }
     console.log(parse_response);
     retrieveQuiz(parse_response);
 }
