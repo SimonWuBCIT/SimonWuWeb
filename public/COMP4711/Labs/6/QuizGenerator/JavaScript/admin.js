@@ -1,5 +1,6 @@
 let number_of_questions = 0;
 let req = new XMLHttpRequest();
+let test;
 
 window.onload = function() {
     //populate_questions();
@@ -171,7 +172,9 @@ function load() {
     let response = this.responseText;
     let parse_response = JSON.parse(response);
     for (let i = 0; i < parse_response.length; ++i) {
-        console.log(parse_response[i].selection);
+        test = (parse_response[i].selection);
+        console.log(test);
+        
         parse_response[i].selection = JSON.parse(parse_response[i].selection);
     }
 
