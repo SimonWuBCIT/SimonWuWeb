@@ -29,20 +29,27 @@ function validate_answers() {
     let answer_count = 0;
 
     let correct_answer;
+    let correct_count = 0;
+    let wrong_count = 0;
 
     for (let i = 0; i < question_list.length; ++i) {
         answer_radio = question_list[i].querySelectorAll('[type="radio"]');
         correct_answer = answer_radio[list_of_answers[i]];
         correct_answer.nextSibling.style.backgroundColor = "green";
         if (correct_answer.checked) {
+            ++correct_count;
             continue;
         }
+        ++wrong_count;
         for (answer_count = 0; answer_count < answer_radio.length; ++answer_count) {
             if (answer_radio[answer_count].checked) {
                 answer_radio[answer_count].nextSibling.style.backgroundColor = "red";
             }
         }
     }
+
+    let score_container = document.getElementsByClassName("scoreContainer")[0];
+    score_container.innerHTML = "Correct: " + correct_count + ", Incorrect: " + wrong_count;
 }
 
 function retrieveQuiz (data) {
