@@ -67,7 +67,9 @@ function connectDatabase() {
 
     return new Promise(function (resolve) {
         con.connect(function (err) {
-            if (err) throw err;
+            if (err) {
+                exports.setUpDatabase();
+            }
             console.log("Connected!");
             resolve();
         });
