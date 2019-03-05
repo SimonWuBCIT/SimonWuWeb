@@ -48,9 +48,10 @@ exports.getRecords = async function () {
         con.query(sql, function (err, result) {
             if (err) throw err;
             let refined_result = result;
-            // for (let i = 0; i < result.length; ++i) {
-            //     refined_result[i].selection = JSON.parse(unsanitize(result[i].selection));
-            // }
+            for (let i = 0; i < result.length; ++i) {
+                //refined_result[i].selection = JSON.parse(unsanitize(result[i].selection));
+                refined_result[i].selection = JSON.parse(result[i].selection);
+            }
             resolve(refined_result);
         });
     });
