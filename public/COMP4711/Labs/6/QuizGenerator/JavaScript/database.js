@@ -48,7 +48,7 @@ exports.getRecords = async function () {
         con.query(sql, async function (err, result) {
             if (err) {
                 await createTable();
-                resolve(exports.getRecords());
+                resolve();
             }
             let refined_result = result;
             for (let i = 0; i < result.length; ++i) {
