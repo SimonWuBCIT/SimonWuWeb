@@ -45,7 +45,7 @@ exports.getRecords = async function () {
     let sql = `SELECT * FROM quizQuestions`;
 
     return new Promise(function (resolve) {
-        con.query(sql, function (err, result) {
+        con.query(sql, async function (err, result) {
             if (err) {
                 await createTable();
                 resolve(exports.getRecords());
