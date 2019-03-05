@@ -33,7 +33,8 @@ exports.addEntry = async function (question_list) {
 
     for (let i = 0; i < question_list.length; ++i) {
         let raw_options = JSON.stringify(question_list[i].options);
-        let options = sanitize(raw_options);
+        //let options = sanitize(raw_options);
+        let options = con.escape(raw_options);
         console.log(options);
         await insertRow(question_list[i].topic, options, question_list[i].correct_answer);
     }
@@ -48,9 +49,9 @@ exports.getRecords = async function () {
         con.query(sql, function (err, result) {
             if (err) throw err;
             let refined_result = result;
-            for (let i = 0; i < result.length; ++i) {
-                refined_result[i].selection = JSON.parse(unsanitize(result[i].selection));
-            }
+            // for (let i = 0; i < result.length; ++i) {
+            //     refined_result[i].selection = JSON.parse(unsanitize(result[i].selection));
+            // }
             resolve(refined_result);
         });
     });
