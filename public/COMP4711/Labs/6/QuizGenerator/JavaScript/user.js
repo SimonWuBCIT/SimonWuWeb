@@ -137,7 +137,7 @@ function load() {
     let parse_response = JSON.parse(response);
     for (let i = 0; i < parse_response.length; ++i) {
         let tempString = parse_response[i].selection.substring(1, parse_response[i].selection.length - 1);
-        parse_response[i].selection = unsanitize(JSON.parse(tempString));
+        parse_response[i].selection = unescape(JSON.parse(tempString));
     }
     console.log(parse_response);
     retrieveQuiz(parse_response);
@@ -153,5 +153,5 @@ function unsanitize(old_string) {
         }
     }
     console.log(json_string);
-    return unescape(json_string);
+    return json_string;
 }
