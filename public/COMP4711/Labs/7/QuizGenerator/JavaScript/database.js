@@ -42,7 +42,7 @@ exports.addEntry = async function (question_list, tableName) {
 exports.getRecords = async function (tableName) {
     await connectDatabase(tableName);
 
-    let sql = `SELECT * FROM quizQuestions`;
+    let sql = `SELECT * FROM ${tableName}`;
 
     return new Promise(function (resolve) {
         con.query(sql, async function (err, result) {

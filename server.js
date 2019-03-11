@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 let database = require('./public/COMP4711/MemoryGame/JavaScript/database');
-let quiz_database = require('./public/COMP4711/Labs/6/QuizGenerator/JavaScript/database');
+let quiz_database = require('./public/COMP4711/Labs/7/QuizGenerator/JavaScript/database');
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(parser.urlencoded({extended: true}));
@@ -52,7 +52,9 @@ app.post('/result', (req, res) => {
 
 app.post('/getQuiz', (req, res) => {
     console.log("Got request for quiz questions");
-    quiz_database.getRecords().then(function(results) {
+    let table_name = req.body.table_name;
+    console.log(table_name);
+    quiz_database.getRecords(table_name).then(function(results) {
         let data = results
         let send_data = JSON.stringify(data);
         res.send(send_data);
