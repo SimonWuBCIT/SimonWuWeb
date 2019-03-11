@@ -2,9 +2,9 @@ let number_of_questions = 0;
 let req = new XMLHttpRequest();
 let test;
 
-window.onload = function() {
+window.onload = async function() {
     //populate_questions();
-    getQuestions();
+    await getQuestions();
     create_button(document.getElementsByClassName("button_container")[0], strings[document.documentElement.lang].add_text, "add_button");
     create_button(document.getElementsByClassName("button_container")[0], strings[document.documentElement.lang].submit_text, "submit_button");
 
@@ -157,15 +157,27 @@ function load_question(question_number = 1) {
 
 function updateDatabase(my_questions) {
     let json_questions = JSON.stringify(my_questions);
-    $.post("https://story.simonwu.work:443/quizQuestions", {question_list: json_questions});
+    $.post("https://story.simonwu.work:443/quizQuestions", {question_list: json_questions, question_table: "lab7Quiz"});
 }
 
-function getQuestions() {
+async function getQuestions() {
     let url = "https://story.simonwu.work:443/getQuiz";
 
-    req.open('GET', url, true);
-    req.addEventListener('load', load);
-    req.send();
+    const setting = {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({table_name : "lab7Quiz"})
+    };
+    
+    let res = await fetch(url, setting);
+    let data = await res.json();
+    console.log(data);
+    // req.open('POST', url, true);
+    // req.addEventListener('load', load);
+    // req.send();
 }
 
 function load() {

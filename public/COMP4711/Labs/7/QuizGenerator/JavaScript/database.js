@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 let con;
 
-exports.setUpDatabase = async function () {
+exports.setUpDatabase = async function (tableName) {
     let connect = mysql.createConnection({
         host: "localhost",
         user: "root",
@@ -17,9 +17,9 @@ exports.setUpDatabase = async function () {
                 if (err) throw err;
                 console.log("Database created");
                 closeConnection(connect);
-                await connectDatabase();
-                await dropTable();
-                await createTable();
+                await connectDatabase(tableName);
+                await dropTable(tableName);
+                await createTable(tableName);
                 await closeConnection(con);
                 resolve();
             });
@@ -27,27 +27,27 @@ exports.setUpDatabase = async function () {
     });
 }
 
-exports.addEntry = async function (question_list) {
-    await connectDatabase();
+exports.addEntry = async function (question_list, tableName) {
+    await connectDatabase(tableName);
 
     for (let i = 0; i < question_list.length; ++i) {
         let raw_options = JSON.stringify(question_list[i].options);
         //let options = sanitize(raw_options);
         let options = con.escape(raw_options);
         console.log(options);
-        await insertRow(con.escape(question_list[i].topic), options, question_list[i].correct_answer);
+        await insertRow(con.escape(question_list[i].topic), options, question_list[i].correct_answer, tableName);
     }
 }
 
-exports.getRecords = async function () {
-    await connectDatabase();
+exports.getRecords = async function (tableName) {
+    await connectDatabase(tableName);
 
     let sql = `SELECT * FROM quizQuestions`;
 
     return new Promise(function (resolve) {
         con.query(sql, async function (err, result) {
             if (err) {
-                await createTable();
+                await createTable(tableName);
                 resolve();
             }
             let refined_result = result;
@@ -61,7 +61,7 @@ exports.getRecords = async function () {
     });
 }
 
-function connectDatabase() {
+function connectDatabase(tableName) {
     con = mysql.createConnection({
         host: "localhost",
         user: "root",
@@ -73,8 +73,8 @@ function connectDatabase() {
         con.connect(async function (err) {
             if (err) {
                 await exports.setUpDatabase();
-                await dropTable();
-                await createTable();
+                await dropTable(tableName);
+                await createTable(tableName);
             }
             console.log("Connected!");
             resolve();
@@ -82,8 +82,11 @@ function connectDatabase() {
     });
 }
 
-function createTable() {
-    let sql = `CREATE TABLE quizQuestions (id INT AUTO_INCREMENT PRIMARY KEY, topic VARCHAR(255), selection VARCHAR(1024), correctAnswer VARCHAR(255))`;
+function createTable(tableName) {
+    if (tableName == "" || tableName == undefined || tableName == 0) {
+        tableName = "quizQuestions";
+    }
+    let sql = `CREATE TABLE ${tableName} (id INT AUTO_INCREMENT PRIMARY KEY, topic VARCHAR(255), selection VARCHAR(1024), correctAnswer VARCHAR(255))`;
 
     return new Promise(function (resolve) {
         con.query(sql, function (err, result) {
@@ -97,22 +100,30 @@ function createTable() {
     });
 }
 
-function dropTable() {
-    let sql = "DROP TABLE IF EXISTS quizQuestions";
+function dropTable(tableName) {
+    if (tableName == "" || tableName == undefined || tableName == 0) {
+        tableName = "quizQuestions";
+    }
+
+    let sql = `DROP TABLE IF EXISTS ${tableName}`;
 
     return new Promise(function (resolve) {
         con.query(sql, function (err, result) {
             if (err) {
                 console.log("no such table");
             };
-            console.log("quizQuestions table dropped");
+            console.log(`${tableName} table dropped`);
             resolve();
         });
     })
 }
 
-function insertRow(topic, options, correctAnswer) {
-    let sql = `INSERT INTO quizQuestions (topic, selection, correctAnswer) VALUES ("${topic}", "${options}", "${correctAnswer}")`;
+function insertRow(topic, options, correctAnswer, tableName) {
+    if (tableName == "" || tableName == undefined || tableName == 0) {
+        tableName = "quizQuestions";
+    }
+
+    let sql = `INSERT INTO ${tableName} (topic, selection, correctAnswer) VALUES ("${topic}", "${options}", "${correctAnswer}")`;
 
     return new Promise(function (resolve) {
         con.query(sql, function (err, result) {
