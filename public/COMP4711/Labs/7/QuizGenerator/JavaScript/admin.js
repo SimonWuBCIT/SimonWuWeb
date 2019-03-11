@@ -174,15 +174,16 @@ async function getQuestions() {
     
     let res = await fetch(url, setting);
     let data = await res.json();
-    console.log(data);
+
+    load(data);
     // req.open('POST', url, true);
     // req.addEventListener('load', load);
     // req.send();
 }
 
-function load() {
-    let response = this.responseText;
-    let parse_response = JSON.parse(response);
+function load(parse_response) {
+    //let response = this.responseText;
+    //let parse_response = JSON.parse(response);
     for (let i = 0; i < parse_response.length; ++i) {
         test = (parse_response[i].selection);
         console.log(test);
