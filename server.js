@@ -69,7 +69,7 @@ app.post('/quizQuestions', async (req, res) => {
     console.log("Got data");
     let json_question = req.body.question_list;
     let parsed_question = JSON.parse(json_question);
-    quiz_database.addEntry(parsed_question); 
+    quiz_database.addEntry(parsed_question, table_name); 
     res.end("yes");   
 });
 
