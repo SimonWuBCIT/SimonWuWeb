@@ -127,14 +127,24 @@ function load_question(question_number = 1) {
 function getQuestions() {
     let url = "https://story.simonwu.work:443/getQuiz";
 
-    req.open('GET', url, true);
-    req.addEventListener('load', load);
-    req.send();
+    const setting = {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({table_name : "lab7Quiz"})
+    };
+    
+    let res = await fetch(url, setting);
+    let data = await res.json();
+
+    load(data);
 }
 
-function load() {
-    let response = this.responseText;
-    let parse_response = JSON.parse(response);
+function load(parse_response) {
+    //let response = this.responseText;
+    //let parse_response = JSON.parse(response);
     for (let i = 0; i < parse_response.length; ++i) {
         let tempString = parse_response[i].selection.substring(1, parse_response[i].selection.length - 1);
         parse_response[i].selection = JSON.parse(tempString);
