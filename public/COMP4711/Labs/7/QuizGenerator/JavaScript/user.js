@@ -1,9 +1,9 @@
 let list_of_answers = [];
 let req = new XMLHttpRequest();
 
-window.onload = function() {
+window.onload = async function() {
     //retrieveQuiz();
-    getQuestions();
+    await getQuestions();
 }
 
 function create_button(container, button_text, class_name) {
@@ -124,7 +124,7 @@ function load_question(question_number = 1) {
     document.getElementsByClassName("list_of_questions")[0].appendChild(question_div);
 }
 
-function getQuestions() {
+async function getQuestions() {
     let url = "https://story.simonwu.work:443/getQuiz";
 
     const setting = {
